@@ -1,0 +1,1634 @@
+[{
+	"name":"Ariana",
+	"delegation":[
+		{
+			"name":"Ariana ville",
+			"localities":[
+				"Ariana",
+				"Borj El Baccouche",
+				"Centre Commercial Ikram",
+				"Cite Belvedere 2",
+				"Cite Borj Turki 1",
+				"Cite Borj Turki 2",
+				"Cite De La Sante",
+				"Cite Des Roses",
+				"Cite Du Jardin",
+				"Cite Du Printemps",
+				"Cite Du Soleil",
+				"Cite El Intissar 1",
+				"Cite El Intissar 2",
+				"Cite Ennasr 1",
+				"Cite Ennasr 2",
+				"Cite Ennouzha",
+				"Cite Essaada",
+				"Cite Essaada Riadh Andalous",
+				"Cite Jaafar",
+				"Cite Jamil",
+				"Cite Karim",
+				"Cite Mehrzia 1",
+				"El Menzah 5",
+				"El Menzah 6",
+				"El Menzah 7",
+				"El Menzah 8",
+				"Nouvelle Ariana",
+				"Residance El Ouns",
+				"Residance Ennour Ennasr 1",
+				"Residance Ennour Ennasr 2",
+				"Residance Ennour Ariana",
+				"Residance Ibn Zeidoun",
+				"Residance Ichbilia",
+				"Residance Kortoba",
+				"Riadh Landlous"
+			]
+		},
+		{
+			"name":"Ettadhamen",
+			"localities":[
+				"Cite 18 Janvier",
+				"Cite Ben Yerfes",
+				"Cite El Houda",
+				"Cite Ennaser",
+				"Cite Ettayarene",
+				"Cite Sfar",
+				"Cite Snit 2",
+				"Cite Snit Nagra"
+			]
+		},
+		{
+			"name":"Kalaat Landlous",
+			"localities":[
+				"Borj El Hadj",
+				"Cite Bir El Araies",
+				"Cite Des Martyrs",
+				"Cite El Fejja",
+				"Cite El Mourouj",
+				"Cite El Oulja",
+				"Cite El Essibous",
+				"Cite Tarek Ibn Zied",
+				"El Misra",
+				"Ferme Hababou",
+				"Ferme Mustapha",
+				"Henchir Touba",
+				"Henchir Toubias",
+				"Kalaat Landlous",
+				"Pont De Bizerte"
+			]
+		},
+		{
+			"name":"La Soukra",
+			"localities":[
+				"Aeroport Tunis Carthage",
+				"Borj Louzir",
+				"Charguia 1",
+				"Charguia 2",
+				"Charguia 3",
+				"Cite Astree",
+				"Cite Belabla",
+				"Cite Ben Hessine",
+				"Cite Ben kilani",
+				"Cite Bou Fares",
+				"Cite Chouchene",
+				"Cite De La Sante",
+				"Cite De La Terre Libre",
+				"Cite De L'Aeroport",
+				"Cite Des Juges",
+				"Cite El Azzef",
+				"Cite El Behi Ladghem",
+				"Cite El Boustene 1",
+				"Cite El Boustene 2",
+				"Cite El Feth",
+				"Cite El Hana",
+				"Cite El Henaya",
+				"Cite El Maid",
+				"Cite El Mansoura",
+				"Cite El Ouroud",
+				"Cite Elyes",
+				"Cite Ennacim",
+				"Cite Ennouzha 3",
+				"Cite Ettamir",
+				"Cite Ettaamir 5",
+				"Cite Ezzitoun 1",
+				"Cite Ezzitoun 2",
+				"Cite Ezzouaidia",
+				"Cite Farhat",
+				"Cite Fateh",
+				"Cite Fonciere",
+				"Cite Ghouzaila",
+				"Cite Heni Nouira",
+				"Cite Jebira",
+				"Cite Snit",
+				"Site Star",
+				"Cite Touilia",
+				"Dar Fadhal",
+				"La Soukra",
+				"Mosque Erraoudha",
+				"Residance 26-26",
+				"Residance Ahlem",
+				"Residance En Ouns",
+				"Residance Ennesrine",
+				"Residance Meriem",
+				"Sidi Frej",
+				"Sidi Salah",
+				"Sidi Soufiene",
+				"Station Marchandiese Fret",
+				"Village Essahli"
+			]
+		},
+		{
+			"name":"Mnihla",
+			"localities":[
+				"Cite Ali Bourguiba",
+				"Cite De La Republique",
+				"Cite El Bassatine 1",
+				"Cite El Bassatine 2",
+				"Cite El Bassatine 3",
+				"Cite El Ouard",
+				"Cite Ennasr",
+				"Cite Essaada",
+				"Cite Rafaha",
+				"Cite Rous El Harayek",
+				"Essanhaji",
+				"Jardins D'el Menzah",
+				"Mnihla",
+				"Residance Ennasr"
+			]
+		},
+		{
+			"name":"Raoued",
+			"localities":[
+				"Ariana Essoughra",
+				"Borj Touil",
+				"Bou Hnech",
+				"Cite 7 Novembre",
+				"Cite Aeroport",
+				"Cite Chaker",
+				"Cite Charqui",
+				"Cite De La Mosque",
+				"Cite De La Rtt 2",
+				"Cite Des Juges",
+				"Cite El Abadla",
+				"Cite El Amel",
+				"Cite El Ghazala 1",
+				"Cite El Ghazala 2",
+				"Cite El Mouaouiet",
+				"Cite Em Mountazeh",
+				"Cite El Wafa",
+				"Cite El Yamama",
+				"Cite Ennasr",
+				"Cite Ennkhilet",
+				"Cite Ennour Jaafar",
+				"Cite Erriadh",
+				"Cite Essada",
+				"Cite Essahafa",
+				"Cite Ibn Rachik",
+				"Cite Mehrzia 2",
+				"Cite Sidi Salah",
+				"Cite Sidi Slimene",
+				"Cite Snit",
+				"Cite Zghab",
+				"Complexe Technologique",
+				"Douar El Hendi",
+				"El Brarja",
+				"El Hessiene",
+				"Jaafar 1",
+				"Jaafar 2",
+				"Oued El Khayat",
+				"Oued El Makhazen",
+				"Raoued",
+				"Residance El Ayech",
+				"Residance El Ouns",
+				"Residance Ennarjes",
+				"Residance Essalam",
+				"Residance Rim",
+				"Route Ezzaouia"
+			]
+		},
+		{
+			"name":"Sidi Thabet",
+			"localities":[
+				"Bejaoua 2",
+				"Borj El Khoukha",
+				"Borj Youssef",
+				"Cebalet Ben Ammar",
+				"Chorfech",
+				"Chorfech 12",
+				"Chorfech 2",
+				"Chorfech 24",
+				"Chorfech 8",
+				"Cite 18 Janvier",
+				"Cite Afh",
+				"Cite Des Agriculteurs",
+				"Cite Des Oranges",
+				"Cite Dridi",
+				"Cite El Bokri",
+				"Cite El Frachich",
+				"Cite El Ghribi",
+				"Cite El Gouazine",
+				"Cite Mbarka",
+				"Cite El Menthalithe",
+				"Cite El Mrezgua",
+				"Cite Essaaba",
+				"Cite Errbaieb",
+				"Cite Jardins",
+				"Cite Messouda",
+				"Cite Mongi Slim",
+				"Cite Ouvriere",
+				"Cite Sidi Marouane",
+				"Ezzaouia",
+				"Jabbes",
+				"Jabbes El Borj",
+				"Sidi Thabet"
+			]
+		}
+	]
+},
+{
+	"name":"Beja",
+	"delegation":[
+		{
+			"name":"Amdoun",
+			"localities":[
+			]
+		},
+		{
+			"name":"Beja Nord",
+			"localities":[
+			]
+		},
+		{
+			"name":"Beja Sud",
+			"localities":[
+			]
+		},
+		{
+			"name":"Goubellat",
+			"localities":[
+			]
+		},
+		{
+			"name":"Mejez El Bab",
+			"localities":[
+			]
+		},
+		{
+			"name":"Nefza",
+			"localities":[
+			]
+		},
+		{
+			"name":"Teboursouk",
+			"localities":[
+			]
+		},
+		{
+			"name":"Testour",
+			"localities":[
+			]
+		},
+		{
+			"name":"Thibar",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Ben arous",
+	"delegation":[
+		{
+			"name":"Ben Arous",
+			"localities":[
+			]
+		},
+		{
+			"name":"Bou Mhel El Bassatine",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Mourouj",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ezzahra",
+			"localities":[
+			]
+		},
+		{
+			"name":"Fouchana",
+			"localities":[
+			]
+		},
+		{
+			"name":"Hammam Chatt",
+			"localities":[
+			]
+		},
+		{
+			"name":"Hammam lif",
+			"localities":[
+			]
+		},
+		{
+			"name":"Megrine",
+			"localities":[
+			]
+		},
+		{
+			"name":"Mohamdia",
+			"localities":[
+			]
+		},
+		{
+			"name":"Mornag",
+			"localities":[
+			]
+		},
+		{
+			"name":"Nouvelle Medina",
+			"localities":[
+			]
+		},
+		{
+			"name":"Rades",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Bizerte",
+	"delegation":[
+		{
+			"name":"Bizerte Nord",
+			"localities":[
+			]
+		},
+		{
+			"name":"Bizerte Sud",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Alia",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ghar El Melh",
+			"localities":[
+			]
+		},
+		{
+			"name":"Gezala",
+			"localities":[
+			]
+		},
+		{
+			"name":"Jarzouna",
+			"localities":[
+			]
+		},
+		{
+			"name":"Joumine",
+			"localities":[
+			]
+		},
+		{
+			"name":"Mateur",
+			"localities":[
+			]
+		},
+		{
+			"name":"Menzel Bourgiba",
+			"localities":[
+			]
+		},
+		{
+			"name":"Menzel Jemil",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ras Jebel",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sejnane",
+			"localities":[
+			]
+		},
+		{
+			"name":"Tinja",
+			"localities":[
+			]
+		},
+		{
+			"name":"Utique",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Gabes",
+	"delegation":[
+		{
+			"name":"El Hamma",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Metouia",
+			"localities":[
+			]
+		},
+		{
+			"name":"Gabes Medina",
+			"localities":[
+			]
+		},
+		{
+			"name":"Gabes Ouest",
+			"localities":[
+			]
+		},
+		{
+			"name":"Gabes Sud",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ghannouche",
+			"localities":[
+			]
+		},
+		{
+			"name":"Mareth",
+			"localities":[
+			]
+		},
+		{
+			"name":"Matmata",
+			"localities":[
+			]
+		},
+		{
+			"name":"Manzel Habib",
+			"localities":[
+			]
+		},
+		{
+			"name":"Nouvelle Matmata",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Gafsa",
+	"delegation":[
+		{
+			"name":"Belkhir",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Guettar",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Ksar",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Mdhilla",
+			"localities":[
+			]
+		},
+		{
+			"name":"Gafsa Nord",
+			"localities":[
+			]
+		},
+		{
+			"name":"Gasfa Sud",
+			"localities":[
+			]
+		},
+		{
+			"name":"Metlaoui",
+			"localities":[
+			]
+		},
+		{
+			"name":"Moulares",
+			"localities":[
+			]
+		},
+		{
+			"name":"Redeyef",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sidi Aich",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sned",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Jendouba",
+	"delegation":[
+		{
+			"name":"Ain Draham",
+			"localities":[
+			]
+		},
+		{
+			"name":"Balta Bou Aouene",
+			"localities":[
+			]
+		},
+		{
+			"name":"Bous Salem",
+			"localities":[
+			]
+		},
+		{
+			"name":"Fernana",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ghardimaou",
+			"localities":[
+			]
+		},
+		{
+			"name":"Jendouba",
+			"localities":[
+			]
+		},
+		{
+			"name":"Jendouba Nord",
+			"localities":[
+			]
+		},
+		{
+			"name":"Oued Mliz",
+			"localities":[
+			]
+		},
+		{
+			"name":"Tabarka",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Kairouan",
+	"delegation":[
+		{
+			"name":"Bou Hajla",
+			"localities":[
+			]
+		},
+		{
+			"name":"Chebika",
+			"localities":[
+			]
+		},
+		{
+			"name":"Cherarda",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Ala",
+			"localities":[
+			]
+		},
+		{
+			"name":"Haffouz",
+			"localities":[
+			]
+		},
+		{
+			"name":"Hajeb El Ayoun",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kairouan Nord",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kairouan Sud",
+			"localities":[
+			]
+		},
+		{
+			"name":"Nasrallah",
+			"localities":[
+			]
+		},
+		{
+			"name":"Oueslatia",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sbikha",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Kasserine",
+	"delegation":[
+		{
+			"name":"El Ayoun",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ezzouhour",
+			"localities":[
+			]
+		},
+		{
+			"name":"Feriana",
+			"localities":[
+			]
+		},
+		{
+			"name":"Foussana",
+			"localities":[
+			]
+		},
+		{
+			"name":"Haidra",
+			"localities":[
+			]
+		},
+		{
+			"name":"Hassi El Frid",
+			"localities":[
+			]
+		},
+		{
+			"name":"Jediliane",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kasserine Nord",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kasserine Sub",
+			"localities":[
+			]
+		},
+		{
+			"name":"Mejel Bel Abbes",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sbeitla",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sbiba",
+			"localities":[
+			]
+		},
+		{
+			"name":"Thala",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Kebili",
+	"delegation":[
+		{
+			"name":"Douz",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Faouar",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kebili Nord",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kebili Sub",
+			"localities":[
+			]
+		},
+		{
+			"name":"Souk El Ahad",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Le Kef",
+	"delegation":[
+		{
+			"name":"Dahmani",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Ksour",
+			"localities":[
+			]
+		},
+		{
+			"name":"Jerissa",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kalaa El Khasba",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kalaat Sinane",
+			"localities":[
+			]
+		},
+		{
+			"name":"Le Kef Est",
+			"localities":[
+			]
+		},
+		{
+			"name":"Le Kef Ouest",
+			"localities":[
+			]
+		},
+		{
+			"name":"Le Sers",
+			"localities":[
+			]
+		},
+		{
+			"name":"Nabeur",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sakiet Sidi Youssef",
+			"localities":[
+			]
+		},
+		{
+			"name":"Tajerouine",
+			"localities":[
+			]
+		},
+		{
+			"name":"Touiref",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Mahdia",
+	"delegation":[
+		{
+			"name":"Bou Merdes",
+			"localities":[
+			]
+		},
+		{
+			"name":"Chorbane",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Jem",
+			"localities":[
+			]
+		},
+		{
+			"name":"Hbira",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ksour Essaf",
+			"localities":[
+			]
+		},
+		{
+			"name":"La Chebba",
+			"localities":[
+			]
+		},
+		{
+			"name":"Mahdia",
+			"localities":[
+			]
+		},
+		{
+			"name":"Melloulech",
+			"localities":[
+			]
+		},
+		{
+			"name":"Oueld Chamakh",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sidi Alouene",
+			"localities":[
+			]
+		},
+		{
+			"name":"Souassi",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Manouba",
+	"delegation":[
+		{
+			"name":"Borj El Amri",
+			"localities":[
+			]
+		},
+		{
+			"name":"Douar Hicher",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Battan",
+			"localities":[
+			]
+		},
+		{
+			"name":"Jedaida",
+			"localities":[
+			]
+		},
+		{
+			"name":"Mannouba",
+			"localities":[
+			]
+		},
+		{
+			"name":"Mornaguia",
+			"localities":[
+			]
+		},
+		{
+			"name":"Oued Ellil",
+			"localities":[
+			]
+		},
+		{
+			"name":"Tebouba",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Medenine",
+	"delegation":[
+		{
+			"name":"Ajim",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ben Guerdane",
+			"localities":[
+			]
+		},
+		{
+			"name":"Beni Khadache",
+			"localities":[
+			]
+		},
+		{
+			"name":"Djerba Houmet Essouk",
+			"localities":[
+			]
+		},
+		{
+			"name":"Djerba Midoun",
+			"localities":[
+			]
+		},
+		{
+			"name":"Medenine Nord",
+			"localities":[
+			]
+		},
+		{
+			"name":"Medenine Sud",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sidi Makhlouf",
+			"localities":[
+			]
+		},
+		{
+			"name":"Zarzis",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Monastir",
+	"delegation":[
+		{
+			"name":"Bekalta",
+			"localities":[
+			]
+		},
+		{
+			"name":"Bembla",
+			"localities":[
+			]
+		},
+		{
+			"name":"Beni Hassen",
+			"localities":[
+			]
+		},
+		{
+			"name":"Jemmal",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ksar Helal",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ksibet El Mediouni",
+			"localities":[
+			]
+		},
+		{
+			"name":"Moknine",
+			"localities":[
+			]
+		},
+		{
+			"name":"Monastir",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ouerdanine",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sahline",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sayada Lamta Bou Hajar",
+			"localities":[
+			]
+		},
+		{
+			"name":"Teboulba",
+			"localities":[
+			]
+		},
+		{
+			"name":"Zeramdine",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Nabeul",
+	"delegation":[
+		{
+			"name":"Beni Khalled",
+			"localities":[
+			]
+		},
+		{
+			"name":"Beni Khiar",
+			"localities":[
+			]
+		},
+		{
+			"name":"Bou Argoub",
+			"localities":[
+			]
+		},
+		{
+			"name":"Dar Chaabane Elfehri",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Haouaria",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Mida",
+			"localities":[
+			]
+		},
+		{
+			"name":"Grombalia",
+			"localities":[
+			]
+		},
+		{
+			"name":"Hammam El Ghezaz",
+			"localities":[
+			]
+		},
+		{
+			"name":"Hammamet",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kelibia",
+			"localities":[
+			]
+		},
+		{
+			"name":"Korba",
+			"localities":[
+			]
+		},
+		{
+			"name":"Menzel Bouzelfa",
+			"localities":[
+			]
+		},
+		{
+			"name":"Menzel Temime",
+			"localities":[
+			]
+		},
+		{
+			"name":"Nabeul",
+			"localities":[
+			]
+		},
+		{
+			"name":"Soliman",
+			"localities":[
+			]
+		},
+		{
+			"name":"Takelsa",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Sfax",
+	"delegation":[
+		{
+			"name":"Agareb",
+			"localities":[
+			]
+		},
+		{
+			"name":"Bir Ali Ben Khelifa",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Amra",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Hencha",
+			"localities":[
+			]
+		},
+		{
+			"name":"Esskhira",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ghraiba",
+			"localities":[
+			]
+		},
+		{
+			"name":"Jebeniana",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kerkenah",
+			"localities":[
+			]
+		},
+		{
+			"name":"Mahras",
+			"localities":[
+			]
+		},
+		{
+			"name":"Menzel Chaker",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sakiet Eddaier",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sakiet Ezzit",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sfax Est",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sfax Sud",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sfax Ville",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Sidi bouzid",
+	"delegation":[
+		{
+			"name":"Ben Oun",
+			"localities":[
+			]
+		},
+		{
+			"name":"Bir El Haffey",
+			"localities":[
+			]
+		},
+		{
+			"name":"Cebbala",
+			"localities":[
+			]
+		},
+		{
+			"name":"Jilma",
+			"localities":[
+			]
+		},
+		{
+			"name":"Maknassy",
+			"localities":[
+			]
+		},
+		{
+			"name":"Menzel Bouzaiene",
+			"localities":[
+			]
+		},
+		{
+			"name":"Mezzouna",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ouled Haffouz",
+			"localities":[
+			]
+		},
+		{
+			"name":"Regueb",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sidi Bouzid Est",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sidi Bouzid Ouest",
+			"localities":[
+			]
+		},
+		{
+			"name":"Souk Jedid",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Siliana",
+	"delegation":[
+		{
+			"name":"Bargou",
+			"localities":[
+			]
+		},
+		{
+			"name":"Bou Arad",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Aroussa",
+			"localities":[
+			]
+		},
+		{
+			"name":"Gaafour",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kesra",
+			"localities":[
+			]
+		},
+		{
+			"name":"Le Krib",
+			"localities":[
+			]
+		},
+		{
+			"name":"Makthar",
+			"localities":[
+			]
+		},
+		{
+			"name":"Rohia",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sidi Bou Rouis",
+			"localities":[
+			]
+		},
+		{
+			"name":"Siliana Nord",
+			"localities":[
+			]
+		},
+		{
+			"name":"Siliana Sud",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Sousse",
+	"delegation":[
+		{
+			"name":"Akouda",
+			"localities":[
+			]
+		},
+		{
+			"name":"Bou Ficha",
+			"localities":[
+			]
+		},
+		{
+			"name":"Enfidha",
+			"localities":[
+			]
+		},
+		{
+			"name":"Hammam Sousse",
+			"localities":[
+			]
+		},
+		{
+			"name":"Hergla",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kalaa El Kbira",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kalaa Essghira",
+			"localities":[
+			]
+		},
+		{
+			"name":"Kondar",
+			"localities":[
+			]
+		},
+		{
+			"name":"Msaken",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sidi Bou Ali",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sidi El Heni",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sousse Jaouhara",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sousse Riadh",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sousse Ville",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Tataouine",
+	"delegation":[
+		{
+			"name":"Bir Lahmar",
+			"localities":[
+			]
+		},
+		{
+			"name":"Dhehiba",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ghomrassen",
+			"localities":[
+			]
+		},
+		{
+			"name":"Remada",
+			"localities":[
+			]
+		},
+		{
+			"name":"Smar",
+			"localities":[
+			]
+		},
+		{
+			"name":"Tataouine Nord",
+			"localities":[
+			]
+		},
+		{
+			"name":"Tataouine Sud",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Touzer",
+	"delegation":[
+		{
+			"name":"Degueche",
+			"localities":[
+			]
+		},
+		{
+			"name":"Hezoua",
+			"localities":[
+			]
+		},
+		{
+			"name":"Nefta",
+			"localities":[
+			]
+		},
+		{
+			"name":"Tameghza",
+			"localities":[
+			]
+		},
+		{
+			"name":"Touzer",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Tunis",
+	"delegation":[
+		{
+			"name":"Ain Zaghouan",
+			"localities":[
+			]
+		},
+		{
+			"name":"Bab Bhar",
+			"localities":[
+			]
+		},
+		{
+			"name":"Bab Souika",
+			"localities":[
+			]
+		},
+		{
+			"name":"Carthage",
+			"localities":[
+			]
+		},
+		{
+			"name":"Cite El Khadra",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Hrairia",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Kabbarria",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Kram",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Menzah",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Omrane",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Omrane Supérieur",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Ouerdia",
+			"localities":[
+			]
+		},
+		{
+			"name":"Essijoumi",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ettahrir",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ezzouhour",
+			"localities":[
+			]
+		},
+		{
+			"name":"Jbel Jelloud",
+			"localities":[
+			]
+		},
+		{
+			"name":"La Goulette",
+			"localities":[
+			]
+		},
+		{
+			"name":"La Marsa",
+			"localities":[
+			]
+		},
+		{
+			"name":"La Medina",
+			"localities":[
+			]
+		},
+		{
+			"name":"Le Bardo",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sidi El Bechir",
+			"localities":[
+			]
+		},
+		{
+			"name":"Sidi Hassine",
+			"localities":[
+			]
+		}
+	]
+},
+{
+	"name":"Zaghouan",
+	"delegation":[
+		{
+			"name":"Bir Mcherga",
+			"localities":[
+			]
+		},
+		{
+			"name":"El Fahs",
+			"localities":[
+			]
+		},
+		{
+			"name":"Ennadhour",
+			"localities":[
+			]
+		},
+		{
+			"name":"Hamam Zriba",
+			"localities":[
+			]
+		},
+		{
+			"name":"Saouef",
+			"localities":[
+			]
+		},
+		{
+			"name":"Zaghouan",
+			"localities":[
+			]
+		}
+	]
+}]

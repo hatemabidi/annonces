@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr" data-ng-app="moduleAccueil">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport"content="width=device-width, initial-scale=1.0">
+        <title>Accueil - Site d'annonces</title>
+
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/normalise.css" rel="stylesheet" type="text/css">
+        <link href="css/styleAnnonces.css" rel="stylesheet" type="text/css">
+
+    </head>
+
+    <body onresize="sizeWindow(2)" onload="document.getElementById('filtre').style.marginLeft='0px';CategoryActive(1);sizeWindow(1);">
+<!-- bar nav top -->
+        <div class="barMenu" style="z-index:2031;">
+            <div style="text-align:center; width:100%; background:#f00;">
+                <div class="MenuUP">
+                    <div id="showFilter" onclick="sizeWindow(3)">
+                    </div>
+                    <ul class="inline" style="margin:0px">
+                        <li class="fontMenu" style="font-size:26px; margin:0;"><a href="Accueil.html" style="color:#fff;">Site d'annonces</a></li>
+                        <li>
+                            <ul class="inline"style="margin:0px">
+                                <li>
+                                    <input type="text" placeholder="Code d'annonce" class="inputRecherche"/>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="MenuDown">
+                    <ul class="inline" style="margin:0px">
+                        <li class="fontMenu"><a href="#/accueil" style="color:#fff;">Accueil</a></li>
+                        <li class="fontMenu"><a href="Ajoutez_Un_Annonce.html">Ajoutez un annonce</a></li>
+                        <li class="fontMenu"><a href="#/contact.html">Contact</a></li>
+                        <li class="fontMenu"><a href="ConnexionInscription.html">Connexion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+<!-- page -->
+        <div class="row-fluid">
+
+<!-- filtre de recherche -->
+            <div class="filtre" id="filtre">
+                <div class="divCategory">
+                    <div class="centerCategory">
+                        <div id="Category1" class="category" onclick="CategoryActive(1);"></div>
+                        <div id="Category2" class="category" onclick="CategoryActive(2);"></div>
+                        <div id="Category3" class="category" onclick="CategoryActive(3);"></div>
+                        <div id="Category4" class="category" onclick="CategoryActive(4);"></div>
+                        <div id="Category5" class="category" onclick="CategoryActive(5);"></div>
+                        <div id="Category6" class="category" onclick="CategoryActive(6);"></div>
+                    </div>
+                </div>
+                <div class="divInputAllSearch" id="DivInputAllSearch">
+<!-- Government -->
+                    <div data-ng-controller="governmentsController" class="inputListGovernment">
+                        <div onClick="showHideScroll('listCheckboxGovernments');" id="SearchByGovernment">
+                            <input type="text" value="{{inputGovernment}}" class="span12 textGovernment" placeholder="Cocher au moin un gouvernement" disabled >
+                        </div>
+                        <div class="listGovernment" id="listCheckboxGovernments">
+                            <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement"><br/>
+                            <input type="checkbox" style="margin:0px 10px 0px 5px;" ng-click="ajoutSuppInputGovernment(1)" ng-checked="boolAllGovernment"><b> Tout sélectionner </b>
+                            <div data-ng-repeat="government in tabInputGovernment | filter:searchGovernment">
+                                <input type="checkbox" value="{{government.namee}}" ng-click="ajoutSuppInputGovernment(government.namee)" style="margin:0px 10px 0px 10px;" ng-checked="government.val">{{government.namee}}
+                            </div>
+                        </div>
+
+<!-- Delegation -->
+                        <div onClick="showHideScroll('listCheckboxDelegations');" ng-show="showDelegation!=''" id="SearchByDelegation">
+                            <input type="text" value="{{inputDelegation}}" class="span12 textGovernment" placeholder="Cocher au moin une délegation" disabled >
+                        </div>
+                        <div class="listGovernment" id="listCheckboxDelegations">
+                            <input type="text" ng-model="searchDelegation" class="chercherInputFiltre" placeholder="Chercher délegation"><br/>
+                            <input type="checkbox" style="margin:0px 10px 0px 5px;" ng-click="ajoutSuppInputDelegation(1)" ng-checked="boolAllDelegation"><b> Tout sélectionner </b>
+                            <div data-ng-repeat="delegation in tabInputDelegation | filter:searchDelegation">
+                                <input type="checkbox" value="{{delegation.namee}}" ng-click="ajoutSuppInputDelegation(delegation.namee)" style="margin:0px 10px 0px 10px;" ng-checked="delegation.val">{{delegation.namee}}
+                            </div>
+                        </div>
+
+<!-- Localities-->
+                        <div onClick="showHideScroll('listCheckboxLocalities');" ng-show="showLocality!=''" id="SearchByLocality">
+                            <input type="text" value="{{inputLocalities}}" class="span12 textGovernment" placeholder="Cocher au moin une localité" disabled >
+                        </div>
+                        <div class="listGovernment" id="listCheckboxLocalities">
+                            <input type="text" ng-model="searchLocalities" class="chercherInputFiltre" placeholder="Chercher localité"><br/>
+                            <input type="checkbox" style="margin:0px 10px 0px 5px;" ng-click="ajoutSuppInputLocalities(1)" ng-checked="boolAllLocalities"><b> Tout sélectionner </b>
+                            <div data-ng-repeat="localities in tabInputLocalities | filter:searchLocalities">
+                                <input type="checkbox" value="{{localities.namee}}" ng-click="ajoutSuppInputLocalities(localities.namee)" style="margin:0px 10px 0px 10px;" ng-checked="localities.val">{{localities.namee}}
+                            </div>
+                        </div>
+
+                    </div>
+
+<!-- type -->
+                    <select class="form-control span12" name="type" onClick="showHideScroll('select');">
+                        <option value="all">Type d'annonce</option>
+                        <option value="offreV" id="SearchOffer">Offre / Offre de vente</option>
+                        <option value="demandeV" id="SearchRequest">Demande / Demande de vente</option>
+                        <option value="offreL" id="SearchRentOffer">Offre de location</option>
+                        <option value="demandeL" id="SearchRentRequest">Demande de location</option>
+                    </select>
+
+<!-- Brands Car -->
+                    <div data-ng-controller="carBrandsController" class="inputListGovernment">
+                        <div onClick="showHideScroll('listCheckboxBrands');" id="SearchByCarBrand">
+                            <input type="text" value="{{inputBrands}}" class="span12 textGovernment" placeholder="Cocher au moin une marque" disabled>
+                        </div>
+                        <div class="listGovernment" id="listCheckboxBrands">
+                            <input type="text" ng-model="searchMarque" class="chercherInputFiltre" placeholder="Chercher marque"><br/>
+                            <input type="checkbox" style="margin:0px 10px 0px 5px;" ng-click="ajoutSuppInputBrand(1)" ng-checked="boolAllBrands">
+                            <b> Tout sélectionner </b>
+                            <div data-ng-repeat="brand in tabInputBrands | filter:searchMarque">
+                                <input type="checkbox" value="{{brand.namee}}" ng-click="ajoutSuppInputBrand(brand.namee)" style="margin:0px 10px 0px 10px;" ng-checked="brand.val">{{brand.namee | uppercase}}
+                            </div>
+                        </div>
+
+<!-- Model Car -->
+                        <div onClick="showHideScroll('listCheckboxModels');" ng-show="showModels" id="SearchByCarModel">
+                            <input type="text" value="{{inputModels}}" class="span12 textGovernment" placeholder="Cocher au moin un modèle" disabled>
+                        </div>
+                        <div class="listGovernment" id="listCheckboxModels">
+                            <input type="text" ng-model="searchModel" class="chercherInputFiltre" placeholder="Chercher modèle"><br/>
+                            <input type="checkbox" style="margin:0px 10px 0px 5px;" ng-click="ajoutSuppInputModel(1)" ng-checked="boolAllModels">
+                            <b> Tout sélectionner </b>
+                            <div data-ng-repeat="model in tabInputModels | filter:searchModel">
+                                <input type="checkbox" value="{{model.namee}}" ng-click="ajoutSuppInputModel(model.namee)" style="margin:0px 10px 0px 10px;" ng-checked="model.val">{{model.namee}}
+                            </div>
+                        </div>
+                    </div>
+
+<!-- option Search-->
+                    <div>
+                        <div onClick="showHideScroll('optionSearch');">
+                            <input type="text" value="Option de recherche" class="span12 textGovernment" disabled>
+                        </div>
+                        <div class="listGovernment" id="optionSearch">
+                            <table class="table table-condensed table-hover">
+                                <tr id="BlockPrix">
+                                    <td>
+                                        <div class="titleOptionSearch">Prix:</div>
+                                        <input type="text" class="inputOptionSearch" style="width:73px;" placeholder="Min">
+                                        <div class="titleOptionSearch">,</div>
+                                        <input type="text" class="inputOptionSearch" style="width:74px;" placeholder="Max">
+                                    </td>
+                                </tr>
+                                <tr id="BlockKm">
+                                    <td>
+                                        <div class="titleOptionSearch">Kilométrage:</div>
+                                        <input type="text" class="inputOptionSearch" style="width:44px;" placeholder="Min">
+                                        <div class="titleOptionSearch">,</div>
+                                        <input type="text" class="inputOptionSearch" style="width:44px;" placeholder="Max">
+                                    </td>
+                                </tr>
+                                <tr id="BlockAge">
+                                    <td>
+                                        <div class="titleOptionSearch">Age:</div>
+                                        <input type="text" class="inputOptionSearch" style="width:73px;" placeholder="Min">
+                                        <div class="titleOptionSearch">,</div>
+                                        <input type="text" class="inputOptionSearch" style="width:74px;" placeholder="Max">
+                                    </td>
+                                </tr>
+                                <tr id="BlockPuissance">
+                                    <td>
+                                        <div class="titleOptionSearch">Puissance:</div>
+                                        <input type="text" class="inputOptionSearch" style="width:52px;" placeholder="Min">
+                                        <div class="titleOptionSearch">,</div>
+                                        <input type="text" class="inputOptionSearch" style="width:53px;" placeholder="Max">
+                                    </td>
+                                </tr>
+                                <tr id="BlockColor">
+                                    <td>
+                                        <div class="titleOptionSearch">Couleur:</div>
+                                        <select class="form-control span12 inputOptionSearch" style="width:153px;">
+                                            <option>Tout les Couleurs</option>
+                                            <option>Blanc</option>
+                                            <option>Bleu</option>
+                                            <option>Gris</option>
+                                            <option>Jaune</option>
+                                            <option>Marron</option>
+                                            <option>Mauve</option>
+                                            <option>Noir</option>
+                                            <option>Orangé</option>
+                                            <option>Rouge</option>
+                                            <option>Vert</option>
+                                            <option>Autres</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr id="BlockVitesse">
+                                    <td>
+                                        <div class="titleOptionSearch">Boite de Vitesse:</div>
+                                        <select class="form-control span12 inputOptionSearch" style="width:93px;">
+                                            <option>Tout</option>
+                                            <option>Automatique</option>
+                                            <option>Mécanique</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr id="BlockEnergie">
+                                    <td>
+                                        <div class="titleOptionSearch">Energie:</div>
+                                        <select class="form-control span12 inputOptionSearch" style="width:155px;">
+                                            <option>Tout</option>
+                                            <option>Essence</option>
+                                            <option>Diesel</option>
+                                            <option>Gaz</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr id="BlockEtage">
+                                    <td>
+                                        <div class="titleOptionSearch">Nombre d'étage:</div>
+                                        <input type="text" class="inputOptionSearch" style="width:30px;" placeholder="Min">
+                                        <div class="titleOptionSearch">,</div>
+                                        <input type="text" class="inputOptionSearch" style="width:29px;" placeholder="Max">
+                                    </td>
+                                </tr>
+                                <tr id="BlockSurface">
+                                    <td>
+                                        <div class="titleOptionSearch">Surface:</div>
+                                        <input type="text" class="inputOptionSearch" style="width:60px;" placeholder="Min">
+                                        <div class="titleOptionSearch">,</div>
+                                        <input type="text" class="inputOptionSearch" style="width:60px;" placeholder="Max">
+                                    </td>
+                                </tr>
+                                <tr id="BlockRoom">
+                                    <td>
+                                        <div class="titleOptionSearch">Nombre de chambre:</div>
+                                        <input type="text" class="inputOptionSearch" style="width:15px;" placeholder="Min">
+                                        <div class="titleOptionSearch">,</div>
+                                        <input type="text" class="inputOptionSearch" style="width:15px;" placeholder="Max">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+<!-- Button -->
+                    <a href="#/resultatRecherche" <button type="submit" class="btn btn-primary pull-right span12" data-ng-click="disable">Recherche</button></a>
+                    <button class="btn pull-right span12" type="button">Initialiser</button>
+
+                </div>
+                <div class="containerOptionFilter">
+                    <div id="TabCategory1">
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(1,1,true);">
+                            Voitures <span class="badge pull-right">5612</span>
+                        </button><div id="Tab11"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(1,2,true);">
+                            Véhicules professionnels <span class="badge pull-right">1268</span>
+                        </button><div id="Tab12"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(1,3,true);">
+                            Motos <span class="badge pull-right">8946</span>
+                        </button><div id="Tab13"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(1,4,true);">
+                            Equipement Auto et Moto <span class="badge pull-right">4540</span>
+                        </button><div id="Tab14"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(1,5,true);">
+                            Bateaux <span class="badge pull-right">4564</span>
+                        </button><div id="Tab15"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(1,6,true);">
+                            Autres véhicules <span class="badge pull-right">6414</span>
+                        </button><div id="Tab16"></div>
+                    </div>
+                    <div id="TabCategory2">
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(2,1,true);">
+                            Téléphonie <span class="badge pull-right">7897</span>
+                        </button><div id="Tab21"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(2,2,true);">
+                            Image et Son <span class="badge pull-right">1203</span>
+                        </button><div id="Tab22"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(2,3,true);">
+                            Informatique et Accessoires<span class="badge pull-right">4560</span>
+                        </button><div id="Tab23"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(2,4,true);">
+                            Jeux vidéo et Consoles <span class="badge pull-right">1237</span>
+                        </button><div id="Tab24"></div>
+                    </div>
+                    <div id="TabCategory3">
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(3,1,true);">
+                            Appartement <span class="badge pull-right">5468</span>
+                        </button><div id="Tab31"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(3,2,true);">
+                            Maison <span class="badge pull-right">5406</span>
+                        </button><div id="Tab32"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(3,3,true);">
+                            Locations de vacances<span class="badge pull-right">8797</span>
+                        </button><div id="Tab33"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(3,4,true);">
+                            Bureaux<span class="badge pull-right">9871</span>
+                        </button><div id="Tab34"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(3,5,true);">
+                            Terrains<span class="badge pull-right">1030</span>
+                        </button><div id="Tab35"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(3,6,true);">
+                            Colocations <span class="badge pull-right">5406</span>
+                        </button><div id="Tab36"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(3,7,true);">
+                            Autre immobilier <span class="badge pull-right">7163</span>
+                        </button><div id="Tab37"></div>
+                    </div>
+                    <div id="TabCategory4">
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(4,1,true);">
+                            Electroménager <span class="badge pull-right">4972</span>
+                        </button><div id="Tab41"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(4,2,true);">
+                            Intérieur <span class="badge pull-right">9462</span>
+                        </button><div id="Tab42"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(4,3,true);">
+                            Pour les enfants  <span class="badge pull-right">1030</span>
+                        </button><div id="Tab43"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(4,4,true);">
+                            Jardin <span class="badge pull-right">1030</span>
+                        </button><div id="Tab44"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(4,5,true);">
+                            Vêtements <span class="badge pull-right">1030</span>
+                        </button><div id="Tab45"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(4,6,true);">
+                            Accessoires <span class="badge pull-right">1030</span>
+                        </button><div id="Tab46"></div>
+                    </div>
+                    <div id="TabCategory5">
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(5,1,true);">
+                            Hobbies <span class="badge pull-right">8421</span>
+                        </button><div id="Tab51"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(5,2,true);">
+                            Sports et Vélos <span class="badge pull-right">7496</span>
+                        </button><div id="Tab52"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(5,3,true);">
+                            Animaux domestiques<span class="badge pull-right">1345</span>
+                        </button><div id="Tab53"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(5,4,true);">
+                            Films, Livres et Magazines <span class="badge pull-right">4157</span>
+                        </button><div id="Tab54"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(5,5,true);">
+                            Voyage <span class="badge pull-right">5130</span>
+                        </button><div id="Tab55"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(5,6,true);">
+                            Art et Collections<span class="badge pull-right">5487</span>
+                        </button><div id="Tab56"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(5,7,true);">
+                            Musique et Instruments <span class="badge pull-right">5742</span>
+                        </button><div id="Tab57"></div>
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(5,8,true);">
+                            Billetterie <span class="badge pull-right">5742</span>
+                        </button><div id="Tab58"></div>
+                    </div>
+                    <div id="TabCategory6">
+                        <button class="btn" style="width:100%; text-align:left;" onclick="showHideTab(6,1,true);">
+                            Autres <span class="badge pull-right">8792</span>
+                        </button><div id="Tab61"></div>
+                    </div>
+                </div>
+            </div>
+<!-- annonces -->
+            <div class="pull-right" id="pageAnnonce" style="padding-top:40px;" data-ng-view="">
+
+            </div>
+        </div>
+        
+        <script src="js/jquery/jquery.js"></script>
+        <script src="bootstrap/js/bootstrap.js"></script>
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/carController.js"></script>
+        <script src="js/positionnement.js"></script>
+
+    </body>
+</html>

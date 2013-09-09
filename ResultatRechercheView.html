@@ -1,0 +1,54 @@
+<div class="row-fluid" style="margin-top:20px;">
+    <div class="btn-group" data-toggle="buttons-radio" style="margin:0px 0.5%;width:99%; float:right;">
+        <button type="button" class="btn" style="margin-left:-1px;">Puissance</button>
+        <button type="button" class="btn">Kilométrage</button>
+        <button type="button" class="btn">Age</button>
+        <button type="button" class="btn">Prix</button>
+        <button type="button" class="btn">Date</button>
+        <div class="btn-group" style="float:right;">
+            <button class="btn dropdown-toggle" data-toggle="dropdown" style="float:left;">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li data-ng-repeat="feature in showFeatures">
+                    <input type="checkbox" ng-click="showHide($index);" ng-checked="feature.val" style="margin-left:5px;"> {{feature.name}} <br/>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row-fluid" style="margin-top:-20px;">
+    
+    <div class="annonce size-annonce" data-ng-repeat="advert in listCarAdvert">
+        <div class="bevelTitreAnnonce">
+            <div class="dateApercuAnnonce">
+                {{advert.date}}
+            </div>
+        </div>
+        <div class="titreAnnonce">
+            <a href="#/affichageAnnonce">
+                {{advert.brand}} - {{advert.Model}}
+            </a>
+        </div>
+        <div class="video-imgAnnonce">
+            <img class="imgApercuAnnonce" src="{{advert.img}}"/>
+        </div>
+        <div style="width:100%;"><div class="prixAnnonceAndPlay">
+            <div class="prixAnnonce">{{advert.price}} TND</div>
+            <div class="playAnnonce" ng-show="advert.video!=''"></div>
+        </div></div>
+        <div class="descriptionAnnonce">
+            <table class="table table-condensed" style="margin:0;">
+                <tr data-ng-repeat="feature in advert.features" data-ng-show="showFeatures[$index].val">
+                    <td>
+                        <b>{{feature.name}}:</b> {{feature.val}}.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+<div class="row-fluid progress progress-striped">
+    <div class="bar" style="line-height:40px; width:100%;float:left;" data-loading-text="Loading..."><h4>Plus d'annonces.</h4></div>
+</div>

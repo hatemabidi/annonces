@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr" data-ng-app="moduleAccueil">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport"content="width=device-width, initial-scale=1.0">
+        <title>Annonces - Site d'annonces</title>
+
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/normalise.css" rel="stylesheet" type="text/css">
+
+    </head>
+
+    <body onresize="sizeWindow(2)" onload="document.getElementById('filtre').style.marginLeft='0px';CategoryActive(1);sizeWindow(1);">
+<!-- bar nav top -->
+        <div class="barMenu" style="z-index:2031;">
+            <div style="text-align:center; width:100%; background:#f00;">
+                <div class="MenuUP">
+                    <ul class="inline" style="margin:0px">
+                        <li class="fontMenu" style="font-size:26px; margin:0;"><a href="Accueil.html" style="color:#fff;">Site d'annonces</a></li>
+                        <li>
+                            <ul class="inline"style="margin:0px">
+                                <li>
+                                    <input type="text" placeholder="Code d'annonce" class="inputRecherche"/>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="MenuDown">
+                    <ul class="inline" style="margin:0px">
+                        <li class="fontMenu"><a href="Accueil.html">Accueil</a></li>
+                        <li class="fontMenu"><a href="AjoutezUnAnnonce.html" style="color:#fff;">Ajoutez un annonce</a></li>
+                        <li class="fontMenu"><a href="Contact.html">Contact</a></li>
+                        <li class="fontMenu"><a href="ConnexionInscription.html">Connexion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        
+<!-- page -->
+        <div class="row-fluid">
+<!-- annonces -->
+            <div class="span8 offset2">
+            	<div class="container-fluid">
+                	<div class="row-fluid">
+                    	<div class="alert alert-info alertPos">
+                            Vous êtes bien inscrit.
+                        </div>
+                    </div>
+                    <div class="row-fluid" style="margin-top:-20px;">
+                        <div class="span12 annonce" data-ng-controller="addListingController" style=" margin:20px 0px 30px 0px;">
+                            <table class="table" style="margin:0px;">
+                                <thead>
+                                    <caption class="titreGrandAnnonce" style="font-size:24px; text-align:center;">
+                                        <div class="bevelTitreAnnonce"></div>
+                                        Ajoutez un Annonce
+                                    </caption>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                        <!-- localité -->
+                                            <div data-ng-controller="governmentsController">
+                                                <div id="IdCovernmentAdd" class="control-group info">
+                                                    <select class="form-control input-large span12" name="government" ng-init="initPer()" ng-change="setGovernments(data.government.val); VerifAdd(data.government.val,'IdCovernmentAdd','GovernmentAdvertAdd',1)" ng-model="data.government.val" id="GovernmentAdvertAdd">
+                                                        <option value="" style="color:#999">Tout les gouvernements</option>
+                                                        <option data-ng-repeat="government in tabInputGovernment">{{government.namee}}</option>
+                                                    </select>
+                                                    <div class="exempleAdd">
+                                                        Ce champ est obligatoire. Vous devez sélectionner votre gouvernement, exemple : Ariana.
+                                                    </div>
+                                                </div>
+                                                <div id="IdDelegationAdd" class="control-group info" ng-show="showDelegation!=''">
+                                                    <select class="form-control input-large span12" name="government" ng-change="setDelegation(data.delegation.val); VerifAdd(data.delegation.val,'IdDelegationAdd','DelegationAdvertAdd',1)" ng-model="data.delegation.val" id="DelegationAdvertAdd">
+                                                        <option value="" style="color:#999">Tout les délégations</option>
+                                                        <option data-ng-repeat="delegation in tabInputDelegation">{{delegation.namee}}</option>
+                                                    </select>
+                                                    <div class="exempleAdd">
+                                                    </div>
+                                                </div>
+                                                <div id="IdLocalityAdd" class="control-group info" ng-show="showLocality!=''">
+                                                    <select class="form-control input-large span12" name="locality" id="LocalityAdvertAdd" ng-change="VerifAdd(data.locality.val,'IdLocalityAdd','LocalityAdvertAdd',1)" ng-model="data.locality.val">
+                                                        <option value="" style="color:#999">Tout les localités</option>
+                                                        <option data-ng-repeat="locality in tabInputLocalities">{{locality.namee}}</option>
+                                                    </select>
+                                                    <div class="exempleAdd">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <!-- catégorie -->
+                                            <div id="IdCategoryAdd" class="control-group info">
+                                                <select class="form-control input-large span12" ng-init="initAddPer()" ng-change="setCategory(data.category.val); VerifAdd(data.category.val,'IdCategoryAdd','CategoryAdvertAdd',1)" ng-model="data.category.val" id="CategoryAdvertAdd">
+                                                    <option style="background-color:#EEE; color:#999" disabled="disabled" value=""> Catégorie </option>
+                                                    <option style="background-color:#EEE;" disabled="disabled">Véhicules</option>
+                                                        <option>Voitures</option>
+                                                        <option>Véhicules professionnels</option>
+                                                        <option>Motos</option>
+                                                        <option>Equipement Auto et Moto</option>
+                                                        <option>Bateaux</option>
+                                                        <option>Autres véhicules</option>
+                                                    <option  style="background-color:#EEE;" disabled="disabled">Pour la maison</option>
+                                                        <option>Electroménager</option>
+                                                        <option>Intérieur</option>
+                                                        <option>Pour les enfants</option>
+                                                        <option>Jardin</option>
+                                                        <option>Vêtements</option>
+                                                        <option>Accessoires</option>
+                                                    <option  style="background-color:#EEE;" disabled="disabled">Loisirs</option>
+                                                        <option>Hobbies</option>
+                                                        <option>Sports et Vélos</option>
+                                                        <option>Animaux domestiques</option>
+                                                        <option>Films, Livres et Magazines</option>
+                                                        <option>Voyage</option>
+                                                        <option>Art et Collections</option>
+                                                        <option>Musique et Instruments</option>
+                                                        <option>Billetterie</option>
+                                                    <option  style="background-color:#EEE;" disabled="disabled">Multimedia</option>
+                                                        <option>Téléphonie</option>
+                                                        <option>Image et Son</option>
+                                                        <option>Informatique et Accessoires</option>
+                                                        <option>Jeux vidéo et Consoles</option>
+                                                    <option  style="background-color:#EEE;" disabled="disabled">Immobilier</option>
+                                                        <option>Appartement</option>
+                                                        <option>Maison</option>
+                                                        <option>Locations de vacances</option>
+                                                        <option>Terrains</option>
+                                                        <option>Colocations</option>
+                                                        <option>Autre immobilier</option>
+                                                    <option  style="background-color:#EEE;" disabled="disabled">Autres</option>
+                                                        <option>Autres</option>
+                                                </select>
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+
+                                        <!-- Marques voitures -->
+                                            <div data-ng-controller="carBrandsController" ng-show="showAddInfo=='Voitures' || showAddInfo=='Véhicules professionnels' ">
+                                                <div id="IdCarBrandAdd" class="control-group info">
+                                                    <select class="form-control input-large span12" name="secteur" ng-init="initPer()" ng-change="VerifAdd(data.brand.val,'IdCarBrandAdd','CarBrandAdvertAdd',1); getCarBrands(data.brand.val)" ng-model="data.brand.val" id="CarBrandAdvertAdd">
+                                                        <option value="">Tout les marques</option>
+                                                        <option data-ng-repeat="brand in tabInputBrands" value="{{brand.namee}}">{{ brand.namee | uppercase}}</option>
+                                                    </select>
+                                                    <div class="exempleAdd">
+                                                    </div>
+                                                </div>
+                                                <div id="IdCarModelAdd" class="control-group info" data-ng-show="showModels">
+                                                    <select class="form-control input-large span12" name="secteur" id="CarModelAdvertAdd" ng-change="VerifAdd(data.model.val,'IdCarModelAdd','CarModelAdvertAdd')" ng-model="data.model.val">
+                                                        <option value="">Tout les modeles</option>
+                                                        <option data-ng-repeat="model in tabInputModels">{{model.namee}}</option>
+                                                    </select>
+                                                    <div class="exempleAdd">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <!-- étage-->
+                                            <div id="IdFloorAdd" class="control-group info" ng-show="showAddInfo=='Maison' || showAddInfo=='Locations de vacances' || showAddInfo=='Autre immobilier'">
+                                                <input class="form-control input-large span12" type="text" placeholder="Nombre d'étages" id="FloorAdvertAdd" ng-change="VerifAdd(data.floor.val,'IdFloorAdd','FloorAdvertAdd',2)" ng-model="data.floor.val">
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+
+                                        <!-- nombre des chambres-->
+                                            <div id="IdRoomAdd" class="control-group info" ng-show="showAddInfo=='Maison' || showAddInfo=='Locations de vacances' || showAddInfo=='Autre immobilier' || showAddInfo=='Appartement'">
+                                                <input class="form-control input-large span12" type="text" placeholder="Nombre des chambres" id="RoomAdvertAdd" ng-change="VerifAdd(data.room.val,'IdRoomAdd','RoomAdvertAdd',2);" ng-model="data.room.val">
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+
+                                        <!-- surface -->
+                                            <div id="IdSurfaceAdd" class="control-group info" ng-show="showAddInfo=='Maison' || showAddInfo=='Locations de vacances' || showAddInfo=='Autre immobilier' || showAddInfo=='Terrains' || showAddInfo=='Appartement'">
+                                                <input class="form-control input-large span12" type="text" placeholder="Surface" id="SurfaceAdvertAdd" ng-change="VerifAdd(data.surface.val,'IdSurfaceAdd','SurfaceAdvertAdd',2)" ng-model="data.surface.val">
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+
+                                        <!-- kilometrage -->
+                                            <div id="IdKmAdd" class="control-group info" ng-show="showAddInfo=='Voitures' || showAddInfo=='Véhicules professionnels'">
+                                                <input class="form-control input-large span12" type="text" placeholder="Kilométrage" id="KmAdvertAdd" ng-change="VerifAdd(data.km.val,'IdKmAdd','KmAdvertAdd',2)" ng-model="data.km.val">
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+
+                                        <!-- année du modéle -->
+                                            <div id="IdCarModelYearAdd" class="control-group info" ng-show="showAddInfo=='Voitures' || showAddInfo=='Véhicules professionnels'">
+                                                <input class="form-control input-large span12" type="text" placeholder="Année du modèle" id="CarModelYearAdvertAdd" ng-change="VerifAdd(data.year.val,'IdCarModelYearAdd','CarModelYearAdvertAdd',2)" ng-model="data.year.val">
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+
+                                        <!-- Puissance -->
+                                            <div id="IdCarPowerAdd" class="control-group info" ng-show="showAddInfo=='Voitures' || showAddInfo=='Véhicules professionnels'">
+                                                <input class="form-control input-large span12" type="text" placeholder="Puissance" id="CarPowerAdvertAdd" ng-change="VerifAdd(data.power.val,'IdCarPowerAdd','CarPowerAdvertAdd',2)" ng-model="data.power.val">
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+
+                                        <!-- couleur -->
+                                            <div id="IdColorAdd" class="control-group info" ng-show="showAddInfo=='Voitures' || showAddInfo=='Véhicules professionnels'">
+                                                <input class="form-control input-large span12" type="text" placeholder="Couleur" id="ColorAdvertAdd" ng-change="VerifAdd(data.color.val,'IdColorAdd','ColorAdvertAdd',2)" ng-model="data.color.val">
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+
+                                        <!-- type d'annonce -->
+                                            <div id="IdTypeAdd" class="control-group info">
+                                                <select class="form-control input-large span12" ng-change="VerifAdd(data.type.val,'IdTypeAdd','TypeAdvertAdd',1)" ng-model="data.type.val" id="TypeAdvertAdd">
+                                                    <option value="">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+                                        <!-- prix -->
+                                            <div id="IdPrixAdd" class="control-group info">
+                                                <input class="form-control input-large span12" type="text" placeholder="Prix" id="PrixAdvertAdd" ng-change="VerifAdd(data.prix.val,'IdPrixAdd','PrixAdvertAdd',1)" ng-model="data.prix.val">
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+
+                                        <!-- titre d'annonce-->
+                                            <div id="IdTitleAdd" class="control-group info">
+                                                <input class="form-control input-large span12" type="text" placeholder="Titre d'annonce" ng-change="VerifAdd(data.title.val,'IdTitleAdd','TitleAdvertAdd',1)" ng-model="data.title.val" id="TitleAdvertAdd">
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+                                        <!-- description -->
+                                            <div id="IdDescriptionAdd" class="control-group info">
+                                                <textarea class="form-control input-large span12" style="text-align:left; overflow: auto; height:auto;" placeholder="Description" ng-change="VerifAdd(data.description.val,'IdDescriptionAdd','DescriptionAdvertAdd',2)" ng-model="data.description.val" id="DescriptionAdvertAdd"></textarea>
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+
+                                            <div class="row-fluid">
+                                                <div class="span6" style="margin-bottom:10px;">
+                                                    <div class="row-fluid">
+                                                        <input type="file" id="HiddenI" style="display:none" />
+                                                        <input type="text" id="InputI" style="display:none" >
+                                                        <button class="btn pull-right btn-large span12" style="height:200px;" onclick="getfile(HiddenI,InputI);">
+                                                            <h1>+ Photos</h1>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="row-fluid">
+                                                        <input type="file" id="HiddenV" style="display:none" />
+                                                        <input type="text" id="InputV" style="display:none" >
+                                                        <button class="btn pull-right btn-large span12" style="height:200px;" onclick="getfile(HiddenV,InputV)">
+                                                            <h1>+ Videos</h1>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <script type="text/javascript">
+                                                    function getfile(hidden,input){
+                                                        document.getElementById(hidden).click();
+                                                        document.getElementById(input).value=document.getElementById(hidden).value
+                                                    }
+                                                </script>
+                                            </div>
+
+                                            <div id="IdTelAdd" class="control-group info">
+                                                <input class="form-control input-large span12" type="text" placeholder="Numéro du téléphone portable" ng-change="VerifAdd(data.tel.val,'IdTelAdd','TelAdvertAdd',2)" ng-model="data.tel.val" id="TelAdvertAdd">
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+                                            <div id="IdFixeAdd" class="control-group info">
+                                                <input class="form-control input-large span12" type="text" placeholder="Numéro du téléphone fixe" ng-change="VerifAdd(data.fixe.val,'IdFixeAdd','FixeAdvertAdd',2)" ng-model="data.fixe.val" id="FixeAdvertAdd">
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+                                            <div id="IdFaxAdd" class="control-group info">
+                                                <input class="form-control input-large span12" type="text" placeholder="Fax" ng-change="VerifAdd(data.fax.val,'IdFaxAdd','FaxAdvertAdd',2)" ng-model="data.fax.val" id="FaxAdvertAdd">
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+                                            <div id="IdMailAdd" class="control-group info">
+                                                <input class="form-control input-large span12" type="text" placeholder="Adresse mail" ng-change="VerifAdd(data.mail.val,'IdMailAdd','MailAdvertAdd',2)" ng-model="data.mail.val" id="MailAdvertAdd">
+                                                <div class="exempleAdd">
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary pull-right btn-large span12" style="height:56px; line-height: 33px; font-size: 24px;" ng-click="submitBtn()">Publier</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/jquery/jquery.js"></script>
+        <script src="bootstrap/js/bootstrap.js"></script>
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/carController.js"></script>
+    </body>
+</html>

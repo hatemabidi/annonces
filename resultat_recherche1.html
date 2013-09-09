@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="fr" data-ng-app="moduleAccueil">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport"content="width=device-width, initial-scale=1.0">
+        <title>Annonces - Site d'annonces</title>
+
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/normalise.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body onresize="sizeWindow(2)" onload="document.getElementById('filtre').style.marginLeft='0px';CategoryActive(1);sizeWindow(1);">
+<!-- bar nav top -->
+    	<div class="barMenu" style="z-index:2031;">
+			<div style="text-align:center; width:100%; background:#f00;">
+				<div class="MenuUP">
+                    <div id="showFilter" onclick="sizeWindow(3)">
+                    </div>
+					<ul class="inline" style="margin:0px">
+						<li class="fontMenu" style="font-size:26px; margin:0;"><a href="accueil.html" style="color:#fff;">Site d'annonces</a></li>
+						<li>
+							<ul class="inline"style="margin:0px">
+								<li>
+                                    <input type="text" placeholder="Code d'annonce" class="inputRecherche"/>
+                                </li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="MenuDown">
+					<ul class="inline" style="margin:0px">
+                        <li class="fontMenu"><a href="accueil.html" style="color:#fff;">Accueil</a></li>
+                        <li class="fontMenu"><a href="Ajoutez un annonce.html">Ajoutez un annonce</a></li>
+                        <li class="fontMenu"><a href="contact.html">Contact</a></li>
+						<li class="fontMenu"><a href="connexion et inscription.html">Connexion</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+<!-- page -->
+        <div class="row-fluid">
+
+<!-- filtre de recherche -->
+        	<div class="filtre" id="filtre">
+				<div class="tabbable tabs-left">
+                    <ul class="nav nav-tabs ulRecherche">
+                        <li><a href="#tabCategory1" data-toggle="tab" id="Category1" class="category" onclick="CategoryActive(1);"></a></li>
+                        <li><a href="#tabCategory2" data-toggle="tab" id="Category2" class="category" onclick="CategoryActive(2);"></a></li>
+                        <li><a href="#tabCategory3" data-toggle="tab" id="Category3" class="category" onclick="CategoryActive(3);"></a></li>
+                        <li><a href="#tabCategory4" data-toggle="tab" id="Category4" class="category" onclick="CategoryActive(4);"></a></li>
+                        <li><a href="#tabCategory5" data-toggle="tab" id="Category5" class="category" onclick="CategoryActive(5);"></a></li>
+						<li><a href="#tabCategory6" data-toggle="tab" id="Category6" class="category" onclick="CategoryActive(6);"></a></li>
+                        <div class="fixedMenuBack"></div>
+                    </ul>
+  					<div class="tab-content">
+                        <div class="tab-pane tabbable active" id="tabCategory1">
+                        	<div class="accordion" id="accordion2">
+  								<div class="accordion-group">
+    								<div class="accordion-heading">
+      									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse21">
+        									<button class="btn" style="width:100%; text-align:left;">Voitures <span class="badge pull-right">5612</span></button>
+      									</a>
+    								</div>
+                                    <div id="collapse21" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <div onClick="showHideScroll('listCheckboxGovernments');">
+                                                        <input type="text" value="{{inputGovernment}}" class="span12 textGovernment" placeholder="Cocher au moin un gouvernement" disabled >
+                                                    </div>
+                                                    <div class="listGovernment" id="listCheckboxGovernments">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <input type="checkbox" style="margin:0px 10px 0px 5px;" ng-click="ajoutSuppInputGovernment(1)" ng-checked="boolAllGovernment"><b> Tout sélectionner </b>
+                                                        <div data-ng-repeat="government in tabInputGovernment | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.namee}}" ng-click="ajoutSuppInputGovernment(government.namee)" style="margin:0px 10px 0px 10px;" ng-checked="government.val">{{government.namee}}</div>
+                                                    </div>
+                                                </div>
+                                                <div id="listCheckboxDelegations"></div>
+                                                <div id="listCheckboxLocalities"></div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="all">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+
+
+                                                <div data-ng-controller="carBrandsController" class="inputListGovernment">
+                                                    <div onClick="showHideScroll('listCheckboxBrands');">
+                                                        <input type="text" value="{{inputBrands}}" class="span12 textGovernment" placeholder="Cocher au moin une marque" disabled>
+                                                    </div>
+                                                    <div class="listGovernment" id="listCheckboxBrands">
+                                                        <input type="text" ng-model="searchMarque" class="chercherInputFiltre" placeholder="Chercher marque">
+                                                        <input type="checkbox" style="margin:0px 10px 0px 5px;" ng-click="ajoutSuppInputBrand(1)" ng-checked="boolAllBrands"><b> Tout sélectionner </b>
+                                                        <div data-ng-repeat="brand in tabInputBrands | filter:searchMarque">
+                                                        <input type="checkbox" value="{{brand.namee}}" ng-click="ajoutSuppInputBrand(brand.namee)" style="margin:0px 10px 0px 10px;" ng-checked="brand.val">{{brand.namee | uppercase}}</div>
+                                                    </div>
+
+                                                    <div onClick="showHideScroll('listCheckboxModels');">
+                                                        <input type="text" value="{{inputBrands}}" class="span12 textGovernment" placeholder="Cocher au moin une marque" disabled>
+                                                    </div>
+                                                    <div class="listGovernment" id="listCheckboxModels">
+                                                        <input type="text" ng-model="searchMarque" class="chercherInputFiltre" placeholder="Chercher marque">
+                                                        <input type="checkbox" style="margin:0px 10px 0px 5px;" ng-click="ajoutSuppInputBrand(1)" ng-checked="boolAllBrands"><b> Tout sélectionner </b>
+                                                        <div data-ng-repeat="brand in tabInputBrands | filter:searchMarque">
+                                                        <input type="checkbox" value="{{brand.namee}}" ng-click="ajoutSuppInputBrand(brand.namee)" style="margin:0px 10px 0px 10px;" ng-checked="brand.val">{{brand.namee | uppercase}}</div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div data-ng-controller="carBrandsController">
+                                                    <select class="form-control span12" name="secteur" ng-init="initPer()" ng-change="getCarBrands(brand)" ng-model="brand">
+                                                        <option value="">Tout les marques</option>
+                                                        <option data-ng-repeat="brand in brands" value="{{brand.name}}">{{ brand.name | uppercase}}</option>
+                                                    </select>
+                                                    <select class="form-control span12" name="secteur" data-ng-show="showModels">
+                                                        <option value="">Tout les modeles</option>
+                                                        <option data-ng-repeat="model in models" value="{{model}}">{{model}}</option>
+                                                    </select>
+                                                </div>
+
+
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min.." ng-init="valid=true" ng-show="valid">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12" data-ng-click="disable">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse22">
+                                            <button class="btn" style="width:100%; text-align:left;">Véhicules professionnels <span class="badge pull-right">1268</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse22" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <div onClick="showHideScroll('listCheckboxGovernments');">
+                                                        <input type="text" value="{{inputGovernment}}" class="span12 textGovernment" placeholder="Cocher au moin un gouvernement" disabled >
+                                                    </div>
+                                                    <div class="listGovernment" id="listCheckboxGovernments">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <input type="checkbox" style="margin:0px 10px 0px 5px;" ng-click="ajoutSuppInputGovernment(1)" ng-checked="boolAllGovernment"><b> Tout sélectionner </b>
+                                                        <div data-ng-repeat="government in tabInputGovernment | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.namee}}" ng-click="ajoutSuppInputGovernment(government.namee)" style="margin:0px 10px 0px 10px;" ng-checked="government.val">{{government.namee}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse23">
+                                            <button class="btn" style="width:100%; text-align:left;">Motos <span class="badge pull-right">8946</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse23" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in tabInputGovernment | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.namee}}" ng-click="ajoutSuppInput(0)" style="margin:0px 10px 0px 5px;" ng-checked="government.val">{{government.nam}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse24">
+                                            <button class="btn" style="width:100%; text-align:left;">Equipement Auto & Moto <span class="badge pull-right">4540</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse24" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre</option>
+                                                    <option value="demandeV">Demande</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse25">
+                                            <button class="btn" style="width:100%; text-align:left;">Bateaux <span class="badge pull-right">4564</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse25" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+								<div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse26">
+                                            <button class="btn" style="width:100%; text-align:left;">Autres véhicules <span class="badge pull-right">6414</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse26" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane tabbable" id="tabCategory2">
+                        	<div class="accordion" id="accordion3">
+  								<div class="accordion-group">
+    								<div class="accordion-heading">
+      									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapse31">
+        									<button class="btn" style="width:100%; text-align:left;">Téléphonie <span class="badge pull-right">7897</span></button>
+      									</a>
+    								</div>
+                                    <div id="collapse31" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre</option>
+                                                    <option value="demandeV">Demande</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapse32">
+                                            <button class="btn" style="width:100%; text-align:left;">Image & Son <span class="badge pull-right">1203</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse32" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre</option>
+                                                    <option value="demandeV">Demande</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapse33">
+                                            <button class="btn" style="width:100%; text-align:left;">Informatique et Accessoires<span class="badge pull-right">4560</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse33" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre</option>
+                                                    <option value="demandeV">Demande</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapse34">
+                                            <button class="btn" style="width:100%; text-align:left;">Jeux vidéo et Consoles <span class="badge pull-right">1237</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse34" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane tabbable" id="tabCategory3">
+                        	<div class="accordion" id="accordion4">
+  								<div class="accordion-group">
+    								<div class="accordion-heading">
+      									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" href="#collapse41">
+        									<button class="btn" style="width:100%; text-align:left;">Appartement <span class="badge pull-right">5468</span></button>
+      									</a>
+    								</div>
+                                    <div id="collapse41" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController">
+                                                    <select class="form-control span12" name="government" ng-init="initPer()" ng-change="setGovernments(government)" ng-model="government">
+                                                        <option value="">Tout les gouvernements</option>
+                                                        <option data-ng-repeat="government in governments">{{government.name}}</option>
+                                                    </select>
+                                                     <select class="form-control span12" name="government" ng-change="setDelegation(delegation)" ng-model="delegation" ng-show="showDelegation!=''">
+                                                        <option value="">Tout les délégations</option>
+                                                        <option data-ng-repeat="delegation in delegations">{{delegation.name}}</option>
+                                                    </select>
+                                                    <select class="form-control span12" name="locality" ng-show="showLocality!=''">
+                                                        <option value="">Tout les localités</option>
+                                                        <option data-ng-repeat="locality in localities">{{locality}}</option>
+                                                    </select>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" href="#collapse42">
+                                            <button class="btn" style="width:100%; text-align:left;">Maison <span class="badge pull-right">5406</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse42" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController">
+                                                    <select class="form-control span12" name="government" ng-init="initPer()" ng-change="setGovernments(government)" ng-model="government">
+                                                        <option value="">Tout les gouvernements</option>
+                                                        <option data-ng-repeat="government in governments">{{government.name}}</option>
+                                                    </select>
+                                                     <select class="form-control span12" name="government" ng-change="setDelegation(delegation)" ng-model="delegation" ng-show="showDelegation!=''">
+                                                        <option value="">Tout les délégations</option>
+                                                        <option data-ng-repeat="delegation in delegations">{{delegation.name}}</option>
+                                                    </select>
+                                                    <select class="form-control span12" name="locality" ng-show="showLocality!=''">
+                                                        <option value="">Tout les localités</option>
+                                                        <option data-ng-repeat="locality in localities">{{locality}}</option>
+                                                    </select>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" href="#collapse43">
+                                            <button class="btn" style="width:100%; text-align:left;">Locations de vacances<span class="badge pull-right">8797</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse43" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController">
+                                                    <select class="form-control span12" name="government" ng-init="initPer()" ng-change="setGovernments(government)" ng-model="government">
+                                                        <option value="">Tout les gouvernements</option>
+                                                        <option data-ng-repeat="government in governments">{{government.name}}</option>
+                                                    </select>
+                                                     <select class="form-control span12" name="government" ng-change="setDelegation(delegation)" ng-model="delegation" ng-show="showDelegation!=''">
+                                                        <option value="">Tout les délégations</option>
+                                                        <option data-ng-repeat="delegation in delegations">{{delegation.name}}</option>
+                                                    </select>
+                                                    <select class="form-control span12" name="locality" ng-show="showLocality!=''">
+                                                        <option value="">Tout les localités</option>
+                                                        <option data-ng-repeat="locality in localities">{{locality}}</option>
+                                                    </select>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" href="#collapse44">
+                                            <button class="btn" style="width:100%; text-align:left;">Bureaux<span class="badge pull-right">9871</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse44" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController">
+                                                    <select class="form-control span12" name="government" ng-init="initPer()" ng-change="setGovernments(government)" ng-model="government">
+                                                        <option value="">Tout les gouvernements</option>
+                                                        <option data-ng-repeat="government in governments">{{government.name}}</option>
+                                                    </select>
+                                                     <select class="form-control span12" name="government" ng-change="setDelegation(delegation)" ng-model="delegation" ng-show="showDelegation!=''">
+                                                        <option value="">Tout les délégations</option>
+                                                        <option data-ng-repeat="delegation in delegations">{{delegation.name}}</option>
+                                                    </select>
+                                                    <select class="form-control span12" name="locality" ng-show="showLocality!=''">
+                                                        <option value="">Tout les localités</option>
+                                                        <option data-ng-repeat="locality in localities">{{locality}}</option>
+                                                    </select>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" href="#collapse45">
+                                            <button class="btn" style="width:100%; text-align:left;">Terrains<span class="badge pull-right">1030</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse45" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController">
+                                                    <select class="form-control span12" name="government" ng-init="initPer()" ng-change="setGovernments(government)" ng-model="government">
+                                                        <option value="">Tout les gouvernements</option>
+                                                        <option data-ng-repeat="government in governments">{{government.name}}</option>
+                                                    </select>
+                                                     <select class="form-control span12" name="government" ng-change="setDelegation(delegation)" ng-model="delegation" ng-show="showDelegation!=''">
+                                                        <option value="">Tout les délégations</option>
+                                                        <option data-ng-repeat="delegation in delegations">{{delegation.name}}</option>
+                                                    </select>
+                                                    <select class="form-control span12" name="locality" ng-show="showLocality!=''">
+                                                        <option value="">Tout les localités</option>
+                                                        <option data-ng-repeat="locality in localities">{{locality}}</option>
+                                                    </select>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" href="#collapse46">
+                                            <button class="btn" style="width:100%; text-align:left;">Colocations <span class="badge pull-right">5406</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse46" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController">
+                                                    <select class="form-control span12" name="government" ng-init="initPer()" ng-change="setGovernments(government)" ng-model="government">
+                                                        <option value="">Tout les gouvernements</option>
+                                                        <option data-ng-repeat="government in governments">{{government.name}}</option>
+                                                    </select>
+                                                     <select class="form-control span12" name="government" ng-change="setDelegation(delegation)" ng-model="delegation" ng-show="showDelegation!=''">
+                                                        <option value="">Tout les délégations</option>
+                                                        <option data-ng-repeat="delegation in delegations">{{delegation.name}}</option>
+                                                    </select>
+                                                    <select class="form-control span12" name="locality" ng-show="showLocality!=''">
+                                                        <option value="">Tout les localités</option>
+                                                        <option data-ng-repeat="locality in localities">{{locality}}</option>
+                                                    </select>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre</option>
+                                                    <option value="demandeV">Demande</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" href="#collapse47">
+                                            <button class="btn" style="width:100%; text-align:left;">Autre immobilier <span class="badge pull-right">7163</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse47" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController">
+                                                    <select class="form-control span12" name="government" ng-init="initPer()" ng-change="setGovernments(government)" ng-model="government">
+                                                        <option value="">Tout les gouvernements</option>
+                                                        <option data-ng-repeat="government in governments">{{government.name}}</option>
+                                                    </select>
+                                                     <select class="form-control span12" name="government" ng-change="setDelegation(delegation)" ng-model="delegation" ng-show="showDelegation!=''">
+                                                        <option value="">Tout les délégations</option>
+                                                        <option data-ng-repeat="delegation in delegations">{{delegation.name}}</option>
+                                                    </select>
+                                                    <select class="form-control span12" name="locality" ng-show="showLocality!=''">
+                                                        <option value="">Tout les localités</option>
+                                                        <option data-ng-repeat="locality in localities">{{locality}}</option>
+                                                    </select>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane tabbable" id="tabCategory4">
+                    		<div class="accordion" id="accordion5">
+  								<div class="accordion-group">
+    								<div class="accordion-heading">
+      									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion5" href="#collapse51">
+        									<button class="btn" style="width:100%; text-align:left;">Electroménager <span class="badge pull-right">4972</span></button>
+      									</a>
+    								</div>
+                                    <div id="collapse51" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre</option>
+                                                    <option value="demandeV">Demande</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion5" href="#collapse52">
+                                            <button class="btn" style="width:100%; text-align:left;">Intérieur <span class="badge pull-right">9462</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse52" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+								<div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion5" href="#collapse53">
+                                            <button class="btn" style="width:100%; text-align:left;">Pour les enfants  <span class="badge pull-right">1030</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse53" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre</option>
+                                                    <option value="demandeV">Demande</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+								<div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion5" href="#collapse54">
+                                            <button class="btn" style="width:100%; text-align:left;">Jardin <span class="badge pull-right">1030</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse54" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+								<div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion5" href="#collapse55">
+                                            <button class="btn" style="width:100%; text-align:left;">Vêtements <span class="badge pull-right">1030</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse55" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+								<div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion5" href="#collapse56">
+                                            <button class="btn" style="width:100%; text-align:left;">Accessoires <span class="badge pull-right">1030</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse56" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane tabbable" id="tabCategory5">
+                    		<div class="accordion" id="accordion6">
+  								<div class="accordion-group">
+    								<div class="accordion-heading">
+      									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion6" href="#collapse61">
+        									<button class="btn" style="width:100%; text-align:left;">Hobbies <span class="badge pull-right">8421</span></button>
+      									</a>
+    								</div>
+                                    <div id="collapse61" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion6" href="#collapse62">
+                                            <button class="btn" style="width:100%; text-align:left;">Sports et Vélos <span class="badge pull-right">7496</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse62" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre</option>
+                                                    <option value="demandeV">Demande</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion6" href="#collapse63">
+                                            <button class="btn" style="width:100%; text-align:left;">Animaux domestiques<span class="badge pull-right">1345</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse63" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion6" href="#collapse64">
+                                            <button class="btn" style="width:100%; text-align:left;">Films, Livres et Magazines <span class="badge pull-right">4157</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse64" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion6" href="#collapse65">
+                                            <button class="btn" style="width:100%; text-align:left;">Voyage <span class="badge pull-right">5130</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse65" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController">
+                                                    <select class="form-control span12" name="government" ng-init="initPer()" ng-change="setGovernments(government)" ng-model="government">
+                                                        <option value="">Tout les gouvernements</option>
+                                                        <option data-ng-repeat="government in governments">{{government.name}}</option>
+                                                    </select>
+                                                     <select class="form-control span12" name="government" ng-change="setDelegation(delegation)" ng-model="delegation" ng-show="showDelegation!=''">
+                                                        <option value="">Tout les délégations</option>
+                                                        <option data-ng-repeat="delegation in delegations">{{delegation.name}}</option>
+                                                    </select>
+                                                    <select class="form-control span12" name="locality" ng-show="showLocality!=''">
+                                                        <option value="">Tout les localités</option>
+                                                        <option data-ng-repeat="locality in localities">{{locality}}</option>
+                                                    </select>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre</option>
+                                                    <option value="demandeV">Demande</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion6" href="#collapse66">
+                                            <button class="btn" style="width:100%; text-align:left;">Art et Collections<span class="badge pull-right">5487</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse66" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre</option>
+                                                    <option value="demandeV">Demande</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion6" href="#collapse67">
+                                            <button class="btn" style="width:100%; text-align:left;">Musique et Instruments <span class="badge pull-right">5742</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse67" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre</option>
+                                                    <option value="demandeV">Demande</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+								<div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion6" href="#collapse68">
+                                            <button class="btn" style="width:100%; text-align:left;">Billetterie <span class="badge pull-right">5742</span></button>
+                                        </a>
+                                    </div>
+                                    <div id="collapse68" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController" class="inputListGovernment">
+                                                    <input type="text" value="{{inputGovernment}}" class="span12" style="margin-bottom:0px;" placeholder="tout les gouvernement" disabled>
+                                                    <div class="listGovernment" style="height: 214px;">
+                                                        <input type="text" ng-model="searchGovernment" class="chercherInputFiltre" placeholder="Chercher gouvernement">
+                                                        <div data-ng-repeat="government in governments | filter:searchGovernment">
+                                                        <input type="checkbox" value="{{government.name}}" ng-click="ajoutSuppInput(government.name)" style="margin:0px 10px 0px 5px;">{{government.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre</option>
+                                                    <option value="demandeV">Demande</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane tabbable" id="tabCategory6">
+                    		<div class="accordion" id="accordion7">
+  								<div class="accordion-group">
+    								<div class="accordion-heading">
+      									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion7" href="#collapse71">
+        									<button class="btn" style="width:100%; text-align:left;">Autres <span class="badge pull-right">8792</span></button>
+      									</a>
+    								</div>
+                                    <div id="collapse71" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <form>
+                                                <div data-ng-controller="governmentsController">
+                                                    <select class="form-control span12" name="government" ng-init="initPer()" ng-change="setGovernments(government)" ng-model="government">
+                                                        <option value="">Tout les gouvernements</option>
+                                                        <option data-ng-repeat="government in governments">{{government.name}}</option>
+                                                    </select>
+                                                     <select class="form-control span12" name="government" ng-change="setDelegation(delegation)" ng-model="delegation" ng-show="showDelegation!=''">
+                                                        <option value="">Tout les délégations</option>
+                                                        <option data-ng-repeat="delegation in delegations">{{delegation.name}}</option>
+                                                    </select>
+                                                    <select class="form-control span12" name="locality" ng-show="showLocality!=''">
+                                                        <option value="">Tout les localités</option>
+                                                        <option data-ng-repeat="locality in localities">{{locality}}</option>
+                                                    </select>
+                                                </div>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Type d'annonce</option>
+                                                    <option value="offreV">Offre / Offre de vente</option>
+                                                    <option value="demandeV">Demande / Demande de vente</option>
+                                                    <option value="offreL">Offre de location</option>
+                                                    <option value="demandeL">Demande de location</option>
+                                                </select>
+                                                <select class="form-control span12" name="secteur">
+                                                    <option value="tout">Tout les secteur</option>
+                                                </select>
+                                                <select class="form-control span12" name="type">
+                                                    <option value="tout">Tout les types</option>
+                                                </select>
+                                                <select class="form-control span12" name="code">
+                                                    <option value="tout">Tout les code</option>
+                                                </select>
+                                                
+                                                <input class="span6" type="text" name="prixMin" placeholder="Prix min..">
+                                                <input class="span6" type="text" name="prixMax" placeholder="Prix Max..">
+                                                
+                                                <button type="submit" class="btn btn-primary pull-right span12">Recherche</button>
+                                                <button class="btn pull-right span12" type="button">Initialiser</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+  					</div>
+				</div>
+            </div>
+
+<!-- annonces -->
+            <div class="pull-right" id="pageAnnonce">
+            	<div class="row-fluid">
+                	<div class="alert alert-info alertPos">
+						Vous êtes bien inscrit.
+					</div>
+                </div>
+                <div class="row-fluid" style="margin-top:-20px;" data-ng-controller="listCarAdvertController">
+                    
+                    <div class="annonce size-annonce" data-ng-repeat="advert in listCarAdvert">
+                        <div class="bevelTitreAnnonce">
+                            <div class="dateApercuAnnonce">
+                                {{advert.date}}
+                                <div class="showHideCaracAnnonce">
+                                    <div data-ng-repeat="feature in showFeatures">
+                                        <input type="checkbox" ng-click="showHide($index);" ng-checked="feature.val"> {{feature.name}} <br/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="titreAnnonce">
+                        	<a href="affichage annonce.html" target="google">
+                                {{advert.brand}} - {{advert.Model}}
+                            </a>
+                        </div>
+                        <div class="video-imgAnnonce">
+                            <img class="imgApercuAnnonce" src="{{advert.img}}"/>
+                        </div>
+                        <div style="width:100%;"><div class="prixAnnonce">{{advert.price}} TND</div></div>
+                        <div class="descriptionAnnonce">
+                            <table class="table table-condensed" style="margin:0;">
+                                <tr data-ng-repeat="feature in advert.features" data-ng-show="showFeatures[$index].val">
+                                    <td>
+                                        <div class="divDescriptionAper1">{{feature.name}}</div><div class="divDescriptionAper2">: {{feature.val}}.</div>
+                                    </td>
+                                </tr>
+                            </table>
+						</div>
+                    </div>
+
+                </div>
+                <div class="row-fluid progress progress-striped">
+					<div class="bar" style="line-height:40px; width:100%;float:left;" data-loading-text="Loading..."><h4>Plus d'annonces.</h4></div>
+				</div>
+            </div>
+        </div>
+        <script src="js/jquery/jquery.js"></script>
+        <script src="bootstrap/js/bootstrap.js"></script>
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/carController.js"></script>
+        <script src="js/positionnement.js"></script>
+    </body>
+</html>

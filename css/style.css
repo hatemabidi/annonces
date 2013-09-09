@@ -1,0 +1,739 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/**** page ***********************************************************************************/
+@font-face {
+    font-family: "camphor-regular";
+    src: url('../ttf/camphor-regular.ttf');
+}
+
+@font-face {
+    font-family: "camphor-thin";
+    src: url('../ttf/camphor-thin.ttf');
+}
+
+body{
+	background:#f5f5f5;
+	font-family: "camphor-regular";
+}
+
+@media (max-width: 772px) {
+	body{
+		margin:0px 0px 0px 0px;
+		padding:0px 0px 0px 0px;  
+	}
+}
+
+::-webkit-scrollbar { 
+	width: 10px;
+	height: 10px;
+	background-color: #111;
+	opacity:0;
+}
+
+::-webkit-scrollbar-track { 
+	background-color: #EEE;
+	border:1px solid #111;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #111;
+}
+
+.divInputAllSearch{
+	overflow: auto;
+}
+
+.divInputAllSearch select, .divInputAllSearch input, .divInputAllSearch textarea, .divInputAllSearch span, .divInputAllSearch button{
+	margin-top:4px;
+	color:#666;
+}
+
+button{
+	z-index: 1 !important;
+}
+
+.tab-content span,.tab-content .btn-primary{
+	color: #fff;
+}
+
+.form-control {
+	display: block;
+	width: 100%;
+	font-size: 14px;
+	line-height: 1.428571429;
+	vertical-align: middle;
+	background-color: #EEE;
+	border: 1px solid #cccccc;
+	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+			transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.form-control:focus {
+	border-color: rgba(82, 168, 236, 0.8);
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+	cursor: not-allowed;
+	background-color: #eeeeee;
+}
+
+textarea.form-control {
+	height: auto;
+}
+
+.form-control.input-large{
+	height: 56px;
+	line-height: 56px;
+	font-size: 24px;
+	text-align:center;
+	margin: 0;
+}
+
+select.input-large {
+	height: 56px;
+	line-height: 56px;
+}
+
+@media (max-width: 772px) {
+	.barMenu{
+		position:relative;
+	}
+}
+
+/*** BarMenu ***********************************************************************************/
+
+.MenuUP{
+	width:50%;
+	text-align:center;
+	float:left;
+}
+
+.MenuDown{
+	width:50%;
+	text-align:center;
+	float:right;
+}
+
+.fontMenu{
+	text-align:center;
+	font-size:16px;
+	height:40px;
+	line-height:40px;
+}
+
+.barMenu{
+	position:fixed;
+	width:100%;
+	background:#111;
+	padding-top:0px;
+}
+
+.barMenu a{
+	color:#aaa;
+}
+
+.barMenu a:hover{
+	color:#eee;
+	text-decoration:none;
+}
+
+@media (max-width: 863px) {
+	.MenuDown{
+		width:100%;
+		text-align:center;
+		background:#111;
+	}
+	
+	.MenuUP{
+		width:100%;
+		text-align:center;
+		background:#111;
+	}
+	
+	.barMenu{
+		position:fixed;
+		width:100%;
+		background:#111;
+		padding-top:0px;
+	}
+}
+
+@media (max-width: 767px) {
+	.barMenu{
+		position:relative;
+		width:100%;
+		background:#111;
+		padding-top:0px;
+	}
+}
+
+.inputRecherche{
+	margin:-10px 0px 0px 0px !important;
+	width: 120px;
+}
+
+#showFilter{
+	position: absolute;
+	margin-left: 5px;
+	height:40px;
+	width:40px;
+	float:left;
+	cursor:pointer;
+	background: url(../img/hideFilter.png) center no-repeat;
+}
+
+/**** Recherche ***********************************************************************************/
+
+.filtre{
+	background:#EEE;
+	position:fixed;
+	margin-top:40px;
+	height:100%;
+	z-index:2031;
+	width: 300px;
+	border-right:1px solid #ccc; 
+}
+
+#filtre{
+	margin-left: 0px;
+	height:100%;
+	-webkit-transition: margin-left ease-in-out 0.5s;
+	   -moz-transition: margin-left ease-in-out 0.5s;
+		 -o-transition: margin-left ease-in-out 0.5s;
+			transition: margin-left ease-in-out 0.5s;
+}
+
+.divCategory{
+	width: 50px;
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background: #111;
+}
+
+.centerCategory{
+	width: 50px;
+	height: 300px;
+	margin: auto auto auto auto;
+}
+
+.containerOptionFilter{
+	max-width:250px;
+	margin-left:50px;
+	height:100%;
+}
+
+#TabCategory1, #TabCategory2, #TabCategory3, #TabCategory4, #TabCategory5, #TabCategory6{
+	display: none;
+	position: fixed;
+	width: 250px;
+}
+
+.divInputAllSearch{
+	position: fixed;
+	width: 230px;
+	margin-left: 60px;
+	z-index: 50000 !important;
+}
+
+.divInputAllSearch .btn-primary{
+	z-index: 10;
+	color: #eee;
+}
+
+#DivInputAllSearch{
+	margin-top: 0px;
+	height: 0px;
+}
+
+.category{
+	border:0px !important;
+	padding:0px !important;
+	margin:0px 0px 0px 0px !important;
+	width:50px !important;
+	height: 50px !important;
+	-webkit-border-radius: 0 !important;
+       -moz-border-radius: 0 !important;
+            border-radius: 0 !important;
+}
+
+.listGovernment{
+    position: absolute;
+    border-left: 1px #ccc solid;
+    border-right: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+    background: #F5F5F5;
+    width: 228px;
+    overflow: auto;
+    margin-top: -1px;
+    height: auto;
+    font-size: 12px;
+    display: inline-block;
+    color: #666;
+}
+
+.chercherInputFiltre{
+	margin:0px 0px 0px 5px;
+	width:193px;
+	background: url(../img/search-icon.png)no-repeat !important;
+	background-position:98% center !important;
+}
+
+.inputOptionSearch{
+	margin: 0px 0px 0px 5px !important;
+	float: left;
+	width:20px;
+	border: 0px !important;
+	font-size: 14px;
+}
+
+.inputOptionSearch:hover{
+	border: 0px !important;
+
+}
+
+.titleOptionSearch{
+	font-size: 14px;
+	font-weight: bold;
+	line-height:30px;
+	float: left;
+	height: 30px;
+	max-height: 30px;
+}
+
+.table-condensed td{
+	padding: 0px 5px;
+}
+
+@media (max-width: 863px) {
+	.filtre{
+		background:#EEE;
+		position:fixed;
+		height:100%;
+		z-index:2031;
+		margin-top:80px;
+		height: 100%;
+	}
+}
+
+@media (max-width: 767px) {
+	.filtre{
+		background:#EEE;
+		position:relative;
+		height:auto;
+		z-index:2031;
+		margin-top:0px;
+		width: 100%;
+		border-right:0;
+	}
+	.divCategory{
+		width: 100%;
+		height: 50px;
+		margin: 0;
+		padding: 0;
+		background: #111;
+		float: none;
+	}
+
+	.centerCategory{
+		width: 300px;
+		height: 50px;
+		margin: auto auto auto auto;
+	}
+
+	.containerOptionFilter{
+		max-width:100%;
+		width:100%;
+		margin-left:0px;
+		height:auto;
+	}
+
+	.divInputAllSearch{
+		position: absolute;
+		margin-left: 15px;
+		z-index: 50000 !important;
+	}
+
+	#TabCategory1, #TabCategory2, #TabCategory3, #TabCategory4, #TabCategory5, #TabCategory6{
+		position: relative;
+		width: 100%;
+		display: none;
+	}
+
+	.listGovernment{
+	    position: absolute;
+	    border-left: 1px #ccc solid;
+	    border-right: 1px #ccc solid;
+	    border-bottom: 1px #ccc solid;
+	    background: #F5F5F5;
+	    width: 99.7%;
+	    overflow: auto;
+	    margin-top: -1px;
+	    height: auto;
+	    font-size: 12px;
+	    display: inline-block;
+	    color: #666;
+	}
+
+	.chercherInputFiltre{
+		margin:0px 0% 0px 1%;
+		width:95%;
+		background: url(../img/search-icon.png)no-repeat !important;
+		background-position:98% center !important;
+	}
+}
+
+@media (max-width: 300px){
+}
+
+@media (max-width: 767px) {
+	.category{
+		border:0px !important;
+		padding:0px !important;
+		margin:0px 0px 0px 0px !important;
+		width:50px !important;
+		height: 50px !important;
+		float: left;
+		-webkit-border-radius: 0 !important;
+	       -moz-border-radius: 0 !important;
+	            border-radius: 0 !important;
+	}
+}
+
+#Category1{
+	background: url(http://127.0.0.1/annonces/img/category1.png) no-repeat center;
+}
+
+#Category2{
+	background: url(http://127.0.0.1/annonces/img/category2.png) no-repeat center;
+}
+
+#Category3{
+	background: url(http://127.0.0.1/annonces/img/category3.png) no-repeat center;
+}
+
+#Category4{
+	background: url(http://127.0.0.1/annonces/img/category4.png) no-repeat center;
+}
+
+#Category5{
+	background: url(http://127.0.0.1/annonces/img/category5.png) no-repeat center;
+}
+
+#Category6{
+	background: url(http://127.0.0.1/annonces/img/category6.png) no-repeat center;
+}
+
+[id*="Tab"] {
+	position: relative;
+}
+
+button span{
+	margin-top: 2px;
+}
+
+.accordion-toggle{
+	padding:0px;
+}
+
+.textGovernment{
+	margin-bottom:0px !important; 
+	background: #f5f5f5 url(../img/scrollDown.png) center right no-repeat !important;
+	padding-right: 30px !important;
+}
+
+#listCheckboxGovernments, #listCheckboxDelegations, #listCheckboxLocalities, 
+#listCheckboxBrands, #listCheckboxModels, #optionSearch{
+	display: none;
+}
+
+#BlockPrix, #BlockKm, #BlockAge, #BlockPuissance, #BlockColor, #BlockVitesse,
+#BlockEnergie, #BlockEtage, #BlockSurface, #BlockRoom{
+	display: none;
+}
+
+
+/**** Annonces ***********************************************************************************/
+#pageAnnonce{
+	width: 0px;
+	-webkit-transition: width ease-in-out 0.5s;
+			transition: width ease-in-out 0.5s;
+}
+
+.size-annonce{
+	width: 100%;
+	margin-right:0.5%; 
+	margin-left:0.5%;
+	float: left;
+}
+
+@media (min-width: 0px) and (max-width: 386px){
+	.size-annonce{
+		width: 99%;
+	}
+}
+
+@media (min-width: 386px) and (max-width: 576px){
+	.size-annonce{
+		width: 49%;
+	}
+}
+
+@media (min-width: 576px) and (max-width: 768px){
+	.size-annonce{
+		width: 32.33333333333333%;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 961px){
+	.size-annonce{
+		width: 49%;
+	}
+}
+
+@media (min-width: 961px) and (max-width: 1158px){
+	.size-annonce{
+		width: 32.33333333333333%;
+	}
+}
+
+@media (min-width: 1158px) and (max-width: 1544px){
+	.size-annonce{
+		width: 24%;
+	}
+}
+
+@media (min-width: 1544px) and (max-width: 1930px){
+	.size-annonce{
+		width: 19%;
+	}
+}
+
+@media (min-width: 1930px){
+	.size-annonce{
+		width: 15.66666666666666%;
+	}
+}
+
+.alertPos{
+	margin:20px 0.5% 20px 0.5%;
+}
+
+@media (max-width: 863px) {
+	.alertPos{
+		margin:60px 1.063829787234043% 20px 1.063829787234043%;
+	}
+}
+
+@media (max-width: 767px) {
+	.listeAnnonces{
+		margin:0px 10px 0px 10px;
+	}
+	
+	.alertPos{
+		margin:-20px 1.063829787234043% 20px 1.063829787234043%;
+	}
+}
+
+.annonce{
+	margin-top:20px;
+}
+
+.annonce:hover{
+}
+
+.titreAnnonce{
+	background:#111;
+	padding:0px 10px 3px 10px;
+	font-size:20px;
+	min-height: 60px;
+	height: 60px;
+	max-height: 60px;
+	font-weight: bold;
+	line-height: 23px;
+}
+
+.bevelTitreAnnonce{
+	content: "";
+	display: block;
+	border-style: solid;
+	border-color:transparent #f5f5f5 transparent transparent;
+	border-width:0 30px 30px 0;
+	width: 0;
+	height: 0;
+	top: 0;
+	right: 0;
+	float: right;
+}
+
+.dateApercuAnnonce{
+	width: 100%;
+	height: 20px;
+	font-family: camphor-thin;
+	font-size: 13px;
+	margin-top: 45px;
+	margin-left: -69px;
+	display: block;
+	min-width: 90px;
+	color: #ccc;
+	text-align: right;
+	padding: 0px 5px 0px 0px;
+}
+
+.titreAnnonce a{
+	color:#aaa;
+}
+
+.titreAnnonce a:hover{
+	color:#fff;
+	text-decoration:none;
+}
+.titreGrandAnnonce{
+	background:#111;
+	font-size:24px;
+	color:#fff;
+	line-height:45px;
+	text-align:left;
+	padding:0px 0px 0px 20px;
+}
+
+.video-imgAnnonce{
+	text-align:center;
+	background:#EEE;
+	width: 100%;
+	overflow: hidden;
+}
+
+.video-imgAnnonce:hover .imgApercuAnnonce{
+	margin-left: -100px;
+	-webkit-transition: margin 0.5s ease-in-out;
+       -moz-transition: margin 0.5s ease-in-out;
+         -o-transition: margin 0.5s ease-in-out;
+            transition: margin 0.5s ease-in-out;
+}
+
+.prixAnnonceAndPlay{
+	height: 30px;
+	z-index: 20 !important;
+	margin-top: -40px;
+	position: absolute;
+}
+
+.prixAnnonce{
+	height: 30px;
+	font-size: 20px;
+	color:#555;
+	font-weight:bold;
+	line-height: 30px;
+	padding-right: 7px;
+	padding-left: 7px;
+	background: rgba(255,255,255,0.8);
+	float: left;
+	position: relative !important;
+}
+
+.playAnnonce{
+	height: 30px;
+	width: 30px;
+	font-size: 20px;
+	color:#555;
+	background: rgba(255,255,255,0.8) url(../img/play.png) center center no-repeat;
+	margin-left: 5px;
+	display: inline-block;
+	position: relative !important;
+}
+
+.imgApercuAnnonce{
+}
+
+.descriptionAnnonce{
+	padding:0px 0px 0px 0px;
+	color:#555;
+	text-align:center;
+	overflow: hidden;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	background:#EEE;
+}
+
+.fav, .msg, .sig, .fb{
+	margin-top:12px;
+	margin-right:5px;
+	height:19px;
+	width:20px;
+	cursor:pointer;
+}
+
+.fav{background:url(../img/Fav.png);}
+.fav:hover{background:url(../img/FavActive.png);}
+.msg{background:url(../img/Msg.png);width:28px;}
+.msg:hover{background:url(../img/MsgActive.png);}
+.sig{background:url(../img/Sig.png);}
+.sig:hover{background:url(../img/SigActive.png);}
+.fb{background:url(../img/fb.png);}
+.fb:hover{background:url(../img/fbActive.png);}
+
+.progress{
+	margin:20px 0.5% 20px 0.5%;
+	height:40px;
+	cursor:pointer;
+	-webkit-border-radius: 0px;
+       -moz-border-radius: 0px;
+            border-radius: 0px;
+    width: 99%;
+}
+
+.btn-group button{
+	float: right;
+	-webkit-border-radius: 0px !important;
+       -moz-border-radius: 0px !important;
+            border-radius: 0px !important;
+    border:1px solid #ccc !important;
+}
+
+.dropdown-menu{
+	-webkit-border-radius: 0px !important;
+       -moz-border-radius: 0px !important;
+            border-radius: 0px !important;
+    background:#eee;
+}
+
+/******************** ajoutez un annonce *******************************************************/
+
+#FloorAdvertAdd, #RoomAdvertAdd, #SurfaceAdvertAdd, #KmAdvertAdd, #CarModelYearAdvertAdd, #CarPowerAdvertAdd,
+#ColorAdvertAdd, #DescriptionAdvertAdd, #TelAdvertAdd, #FixeAdvertAdd, #FaxAdvertAdd, #MailAdvertAdd, #InInputTel, #InInputFax,
+#TitleAdvertAdd, #GovernmentAdvertAdd, #DelegationAdvertAdd, #LocalityAdvertAdd, #CategoryAdvertAdd, #CarBrandAdvertAdd,
+#CarModelAdvertAdd, #TypeAdvertAdd, #CoInputMail, #CoInputPass, #InInputFName, #InInputLName, #InInputMail, #InInputPass1, 
+#InInputPass2, #PrixAdvertAdd, #InInputFixe{
+	background : #fff url(../img/InputInfo.png) top right no-repeat;
+	color:#555 !important;
+	padding-right: 56px;
+	text-align:left;
+}
+
+.exempleAdd{
+	width: 100%;
+	height: 0px;
+	overflow: hidden;
+	margin: 0;
+	line-height: 40px;
+	text-align: center;
+
+	-webkit-transition: height 0.5s ease-in-out;
+       -moz-transition: height 0.5s ease-in-out;
+         -o-transition: height 0.5s ease-in-out;
+            transition: height 0.5s ease-in-out;
+}
+
+.control-group:hover .exempleAdd{
+	height: 30px;
+}

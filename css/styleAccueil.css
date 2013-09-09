@@ -1,0 +1,84 @@
+.grandAffiche, .demiAffiche, .petitAffiche{
+	width:99.999%;
+	float: left;
+}
+
+@media (min-width: 0px) and (max-width: 386px){
+	.grandAffiche{
+		width:99.999%;
+	}
+
+	.petitAffiche{
+		width:99.999%;
+	}
+}
+
+@media (min-width: 386px) and (max-width: 576px){
+	.grandAffiche{
+		width:99.999%;
+	}
+
+	.demiAffiche{
+		width:49.999%;
+	}
+}
+
+@media (min-width: 576px) and (max-width: 768px){
+	.grandAffiche{
+		width:66.665%;
+	}
+
+	.demiAffiche{
+		width:33.332%;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 961px){
+	.grandAffiche{
+		width:99.999%;
+	}
+
+	.demiAffiche{
+		width:49.999%;
+	}
+}
+
+@media (min-width: 961px) and (max-width: 1158px){
+	.grandAffiche{
+		width:66.665%;
+	}
+
+	.demiAffiche{
+		width:33.332%;
+	}
+}
+
+@media (min-width: 1158px) and (max-width: 1544px){
+	.grandAffiche{
+		width:49.999%;
+	}
+
+	.demiAffiche{
+		width:24.999%;
+	}
+}
+
+@media (min-width: 1544px) and (max-width: 1930px){
+	.grandAffiche{
+		width:39.999%;
+	}
+
+	.demiAffiche{
+		width:19.999%;
+	}
+}
+
+@media (min-width: 1930px){
+	.grandAffiche{
+		width:33.332%;
+	}
+
+	.demiAffiche{
+		width:16.665%;
+	}
+}

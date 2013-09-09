@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr" data-ng-app="moduleAccueil">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport"content="width=device-width, initial-scale=1.0">
+        <title>Annonces - Site d'annonces</title>
+
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/normalise.css" rel="stylesheet" type="text/css">
+
+    </head>
+
+    <body onresize="sizeWindow(2)" onload="document.getElementById('filtre').style.marginLeft='0px';CategoryActive(1);sizeWindow(1);">
+<!-- bar nav top -->
+        <div class="barMenu" style="z-index:2031;">
+            <div style="text-align:center; width:100%; background:#f00;">
+                <div class="MenuUP">
+                    <ul class="inline" style="margin:0px">
+                        <li class="fontMenu" style="font-size:26px; margin:0;"><a href="Accueil.html" style="color:#fff;">Site d'annonces</a></li>
+                        <li>
+                            <ul class="inline"style="margin:0px">
+                                <li>
+                                    <input type="text" placeholder="Code d'annonce" class="inputRecherche"/>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="MenuDown">
+                    <ul class="inline" style="margin:0px">
+                        <li class="fontMenu"><a href="Accueil.html">Accueil</a></li>
+                        <li class="fontMenu"><a href="AjoutezUnAnnonce.html">Ajoutez un annonce</a></li>
+                        <li class="fontMenu"><a href="Contact.html">Contact</a></li>
+                        <li class="fontMenu"><a href="ConnexionInscription.html" style="color:#fff;">Connexion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        
+<!-- page -->
+        <div class="row-fluid">
+<!-- annonces -->
+            <div class="span8 offset2">
+            	<div class="container-fluid">
+                	<div class="row-fluid">
+                    	<div class="alert alert-info alertPos">
+                            Vous êtes bien inscrit.
+                        </div>
+                    </div>
+                    <div class="row-fluid" style="margin-top:-20px;">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+		<script src="js/jquery.js"></script>
+        <script src="bootstrap/js/bootstrap.js"></script>
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/carController.js"></script>
+    </body>
+</html>

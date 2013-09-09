@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr" data-ng-app="moduleAccueil">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport"content="width=device-width, initial-scale=1.0">
+        <title>Annonces - Site d'annonces</title>
+
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/normalise.css" rel="stylesheet" type="text/css">
+
+    </head>
+
+    <body onresize="sizeWindow(2)" onload="document.getElementById('filtre').style.marginLeft='0px';CategoryActive(1);sizeWindow(1);">
+<!-- bar nav top -->
+        <div class="barMenu" style="z-index:2031;">
+            <div style="text-align:center; width:100%; background:#f00;">
+                <div class="MenuUP">
+                    <ul class="inline" style="margin:0px">
+                        <li class="fontMenu" style="font-size:26px; margin:0;"><a href="Accueil.html" style="color:#fff;">Site d'annonces</a></li>
+                        <li>
+                            <ul class="inline"style="margin:0px">
+                                <li>
+                                    <input type="text" placeholder="Code d'annonce" class="inputRecherche"/>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="MenuDown">
+                    <ul class="inline" style="margin:0px">
+                        <li class="fontMenu"><a href="Accueil.html">Accueil</a></li>
+                        <li class="fontMenu"><a href="AjoutezUnAnnonce.html">Ajoutez un annonce</a></li>
+                        <li class="fontMenu"><a href="Contact.html">Contact</a></li>
+                        <li class="fontMenu"><a href="ConnexionInscription.html" style="color:#fff;">Connexion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        
+<!-- page -->
+        <div class="row-fluid">
+<!-- annonces -->
+            <div class="span8 offset2">
+            	<div class="container-fluid">
+                	<div class="row-fluid">
+                    	<div class="alert alert-info alertPos">
+                            Vous êtes bien inscrit.
+                        </div>
+                    </div>
+                    <div class="row-fluid" style="margin-top:-20px;">
+                        <div class="span6" ng-controller="LoginController">
+                            <div class="row-fluid">
+                                <div class="span12 annonce">
+        							<div style="text-align:center; width:100%; background:#111; border:1px solid #D5d5d5; margin-bottom:10px;color:#fff">
+                                        <div class="bevelTitreAnnonce" style="margin:-1px -1px 0px 0px;"></div>
+                                        <h2>Connexion</h2>
+                                    </div>
+        							<div style="padding:0px 15px 0px 15px">
+                                        <div id="CoMail" class="control-group info">
+        								    <input class="form-control input-large span12" type="text" placeholder="Adresse mail" ng-model="data.mail.val" id="CoInputMail" ng-change="VerifAdd(data.mail.val,'CoMail','CoInputMail',1)">
+                                            <div class="exempleAdd">
+                                            </div>
+                                        </div>
+                                        <div id="CoPass" class="control-group info">
+        								    <input class="form-control input-large span12" type="password" placeholder="Mot de passe" ng-model="data.password.val" id="CoInputPass" ng-change="VerifAdd(data.password.val,'CoPass','CoInputPass',1)">
+                                            <div class="exempleAdd">
+                                            </div>
+                                        </div>
+        							</div>
+        							<button type="submit" class="btn btn-primary pull-right btn-large span12" style="height:56px; line-height: 33px; font-size: 24px;" ng-click="login();">Connexion</button>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span4 annonce">
+                                    <button type="submit" class="btn pull-right btn-large span12" style="height:100px; line-height: 50px; font-size: 24px;">facebook</button>
+                                </div>
+                                <div class="span4 annonce">
+                                    <button type="submit" class="btn pull-right btn-large span12" style="height:100px; line-height: 50px; font-size: 24px;">twitter</button>
+                                </div>
+                                <div class="span4 annonce">
+                                    <button type="submit" class="btn pull-right btn-large span12" style="height:100px; line-height: 50px; font-size: 24px;">google</button>
+                                </div>
+                            </div>
+						</div>
+						<div class="span6 annonce" ng-controller="SignupController">
+							<div style="text-align:center; width:100%; background:#111; border:1px solid #D5d5d5; margin-bottom:10px; color:#fff;">
+                                <div class="bevelTitreAnnonce" style="margin:-1px -1px 0px 0px;"></div>
+                                <h2>Inscription</h2>
+                            </div>
+							<div style="padding:0px 15px 0px 15px">
+                                <div id="InLName" class="control-group info">
+                                    <input class="form-control input-large span12" type="text" placeholder="Nom" ng-model="data.lastName.val" id="InInputLName" ng-change="VerifAdd(data.lastName.val,'InLName','InInputLName',1)">
+                                    <div class="exempleAdd">
+                                    </div>
+                                </div>
+                                <div id="InFName" class="control-group info">
+								    <input class="form-control input-large span12" type="text" placeholder="Prenom" ng-model="data.firstName.val" id="InInputFName" ng-change="VerifAdd(data.firstName.val,'InFName','InInputFName',1)">
+                                    <div class="exempleAdd">
+                                    </div>
+                                </div>
+                                <div id="InMail" class="control-group info">
+								    <input class="form-control input-large span12" type="text" placeholder="Adresse mail" ng-model="data.mailI.val" id="InInputMail" ng-change="VerifAdd(data.mailI.val,'InMail','InInputMail',1)">
+                                    <div class="exempleAdd">
+                                    </div>
+                                </div>
+                                <div id="InPass1" class="control-group info">
+								    <input class="form-control input-large span12" type="password" placeholder="Mot de passe" ng-model="data.passwordI.val" id="InInputPass1" ng-change="VerifAdd(data.passwordI.val,'InPass1','InInputPass1',1)">
+                                    <div class="exempleAdd">
+                                    </div>
+                                </div>
+                                <div id="InPass2" class="control-group info">
+								    <input class="form-control input-large span12" type="password" placeholder="Confirmez votre mot de passe" ng-model="data.password2.val" id="InInputPass2" ng-change="VerifAdd(data.password2.val,'InPass2','InInputPass2',1)">
+                                    <div class="exempleAdd">
+                                    </div>
+                                </div>
+                                <div id="InTel" class="control-group info">
+								    <input class="form-control input-large span12" type="text" placeholder="Numéro de téléphone" ng-model="data.tel.val" id="InInputTel" ng-change="VerifAdd(data.tel.val,'InTel','InInputTel',2)">
+                                    <div class="exempleAdd">
+                                    </div>
+                                </div>
+                                <div id="InFixe" class="control-group info">
+                                    <input class="form-control input-large span12" type="text" placeholder="Numéro de téléphone" ng-model="data.fixe.val" id="InInputFixe" ng-change="VerifAdd(data.fixe.val,'InFixe','InInputFixe',2)">
+                                    <div class="exempleAdd">
+                                    </div>
+                                </div>
+                                <div id="InFax" class="control-group info">
+                                    <input class="form-control input-large span12" type="text" placeholder="Numéro de téléphone" ng-model="data.fax.val" id="InInputFax" ng-change="VerifAdd(data.fax.val,'InFax','InInputFax',2)">
+                                    <div class="exempleAdd">
+                                    </div>
+                                </div>
+							</div>
+							<button type="submit" class="btn btn-primary pull-right btn-large span12" style="height:56px; line-height: 33px; font-size: 24px;" ng-click="signup();">Inscription</button>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/jquery.js"></script>
+        <script src="bootstrap/js/bootstrap.js"></script>
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/carController.js"></script>
+    </body>
+</html>
